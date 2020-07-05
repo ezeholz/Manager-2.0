@@ -15,7 +15,6 @@ const listener = app.listen(process.env.PORT, () => {
 const musicBot = new MusicBot({
   discordToken: process.env.TOKEN,
   googleKey: process.env.YOUTUBE_TOKEN,
-  geniusKey: process.env.GENIUS_TOKEN,
   prefix: undefined,
 });
 

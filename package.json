@@ -9,10 +9,14 @@
   "dependencies": {
     "discord.js": "^12.2.0",
     "discord.js-commando": "^0.10.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ffmpeg-static": "^4.2.5",
+    "ffmpeg": "^0.0.4",
+    "@discordjs/opus": "^0.3.2",
+    "lowdb": "^1.0.0"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/music-bot-script"
