@@ -37,6 +37,20 @@ class Manager {
 
     commandFiles.forEach(mod => {
       console.log(mod)
+      fs.readdir(__dirname + '/bot_modules/' + mod + '/commands/', (err, files) => {
+        files.forEach(file => {
+          try {
+            
+            let temp = require(__dirname + '/bot_modules/' + mod + '/commands/' + file);
+            
+            this.client.command[temp.trigger] = temp
+            this.client.command[temp.trigger].module = mod
+            
+          } catch (err) {
+            console.error(mod + " / " + file + " Unable to load " + err)
+          }
+        })
+      })
     })
     
 		// for (const file of commandFiles) {
