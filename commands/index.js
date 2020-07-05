@@ -36,12 +36,11 @@ class Manager {
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
     commandFiles.forEach(mod => {
-      console.log(mod)
-      fs.readdir(__dirname + '/bot_modules/' + mod + '/commands/', (err, files) => {
+      fs.readdir(__dirname + '/functions/' + mod + '/commands/', (err, files) => {
         files.forEach(file => {
           try {
             
-            let temp = require(__dirname + '/bot_modules/' + mod + '/commands/' + file);
+            let temp = require(__dirname + '/functions/' + mod + '/commands/' + file);
             
             this.client.command[temp.trigger] = temp
             this.client.command[temp.trigger].module = mod
