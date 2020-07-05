@@ -5,6 +5,7 @@ dependencies:
   express: 4.17.1
   ffmpeg: 0.0.4
   ffmpeg-static: 4.2.5
+  fs: 0.0.2
   lowdb: 1.0.0
 packages:
   /@discordjs/collection/0.1.5:
@@ -441,6 +442,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
+  /fs/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-4fJE7zkzwbKmS9R5kTYGDQ9ZFPg=
   /gauge/2.7.4:
     dependencies:
       aproba: 1.2.0
@@ -1130,4 +1135,5 @@ specifiers:
   express: ^4.17.1
   ffmpeg: ^0.0.4
   ffmpeg-static: ^4.2.5
+  fs: ^0.0.2
   lowdb: ^1.0.0

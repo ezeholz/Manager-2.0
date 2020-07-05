@@ -33,8 +33,12 @@ class Manager {
 		this.client = new Discord.Client();
 		this.client.commands = new Discord.Collection();  ///Command Handler
 
-		//const commandFiles = fs.readdirSync(path.join(__dirname, '/commands')).filter(file => file.endsWith('.js'));
+		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
+    commandFiles.forEach(mod => {
+      console.log(mod)
+    })
+    
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
 		// 	this.client.commands.set(command.name, command);
