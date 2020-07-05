@@ -1,22 +1,21 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "name": "private-server",
+  "version": "0.0.3",
+  "description": "A simple Music Bot with OP features.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
+    "discord.js": "^12.2.0",
+    "discord.js-commando": "^0.10.0",
     "express": "^4.17.1"
   },
   "engines": {
-    "node": "12.x"
+    "node": "10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://glitch.com/edit/#!/music-bot-script"
   },
   "license": "MIT",
   "keywords": [
