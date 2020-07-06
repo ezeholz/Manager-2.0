@@ -107,7 +107,7 @@ class Manager {
       
       if (command['create'].enabled && command[command['create'].module].enabled) {
         if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
-          command['create'].execute(this, neww, neww.guild)
+          command['create'].voice(this, neww, neww.guild)
         }
       }
       

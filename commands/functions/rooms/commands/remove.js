@@ -2,30 +2,13 @@ const { MessageEmbed, GuildChannelManager } = require('discord.js')
 
 module.exports = {
   
-  trigger: "create",
+  trigger: "remove",
   enabled: true,
   
   category: "Room",
-  description: "Create rooms",
+  description: "Remove rooms",
   
-  execute(Manager, msg, args) {
-    let db = Manager.database;
-    
-    const values = db.getState()
-    
-    const embed = new MessageEmbed()
-        .setTitle('Valores actuales')
-        .addFields(
-          {name: 'Channel to lookout', value: values.channelLook},
-          {name: 'Category for voice', value: values.voiceCategory},
-          {name: 'Category for text', value: values.textCategory},
-        )
-        .setColor('#dada3d')
-      
-      msg.channel.send(embed)
-  },
-  
-  async voice(Manager, author, guild) {
+  async execute(Manager, author, guild) {
     let db = Manager.database;
     
     const values = db.getState()
