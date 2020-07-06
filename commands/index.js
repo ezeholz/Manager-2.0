@@ -42,7 +42,7 @@ class Manager {
         let error = false
         
         let module = require(__dirname + '/functions/' + mod + '/module.js');
-        //module.setup(this, this.database, this.googleKey)
+        module.setup(this, this.database, this.googleKey)
         
         files.forEach(file => {
           try {
@@ -65,7 +65,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    console.log(this.database.getState())
+    //console.log(this.database.getState().createdRooms.DoTPr0[2])
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
