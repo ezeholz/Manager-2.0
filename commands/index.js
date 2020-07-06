@@ -63,7 +63,9 @@ class Manager {
       })
     })
     
-    console.log(this.database.getState())
+    //console.log(this.database.getState())
+    
+    //this.database.setState({})
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
