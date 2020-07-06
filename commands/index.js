@@ -103,16 +103,16 @@ class Manager {
       const newUserChannel = neww.channelID
       const oldUserChannel = old.channelID
       
-      if (this.client.commands['create'].enabled && this.client.commands['create'.module].enabled) {
-        
+      const command = this.client.commands;
+      
+      if (command['create'].enabled && command[command['create'].module].enabled) {
+        if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
+          command['create'].execute(this, neww.id, neww.guild)
+        }
       }
       
-      //console.log(neww)
-      
-      if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
-        
-      }
     })
+    
 	}
 }
 
