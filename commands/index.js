@@ -36,6 +36,7 @@ class Manager {
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
     commandFiles.forEach(mod => {
+      let error = false
       fs.readdir(__dirname + '/functions/' + mod + '/commands/', (err, files) => {
         files.forEach(file => {
           try {
@@ -46,10 +47,14 @@ class Manager {
             this.client.command[temp.trigger].module = mod
             
           } catch (err) {
+            error = true
             console.error(mod + " / " + file + " Unable to load " + err)
           }
         })
       })
+      if (!error) {
+        this.client.command[mod.trigger] = mod
+      }
     })
     
 		// for (const file of commandFiles) {
@@ -59,7 +64,7 @@ class Manager {
 
 		this.client.once('ready', () => {  ///Status
 			console.log('Bot is ready!');
-			this.client.user.setActivity('.help', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
+			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));
