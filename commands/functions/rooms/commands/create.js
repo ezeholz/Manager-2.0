@@ -14,9 +14,10 @@ module.exports = {
     const values = db.getState()
     
     const embed = new MessageEmbed().setColor('#dada3d')
-        .setTitle(':no_entry_sign: Error')
+      .setTitle(':no_entry_sign: Error')
+      .setDescription('Este comando está reservado solo para el chat de voz y no puede ser invocado')
       
-      msg.channel.send(embed)
+    msg.channel.send(embed)
   },
   
   async voice(Manager, author, guild) {
