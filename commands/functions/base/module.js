@@ -1,10 +1,9 @@
 module.exports = {
 
-    trigger: "room",
+    trigger: "base",
     enabled: true,
     
-    category: "Private Rooms",
-    description: "Base command for Private Rooms.",
-    permissionLevel: 1
+    category: "Base",
+    description: "Comandos Básicos"
   
 }
