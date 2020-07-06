@@ -34,7 +34,6 @@ class Manager {
   setup_() {
 		this.client = new Discord.Client();
 		this.client.commands = new Discord.Collection();  ///Command Handler
-    this.client.modules = [];
 
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
