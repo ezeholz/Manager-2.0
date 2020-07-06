@@ -6,8 +6,8 @@ module.exports = {
   category: "Base",
   description: "Comandos Básicos",
   
-  setup(Manager) {
-    
+  setup(Manager, db, googleKey) {
+    db.defaults({base:'holi'}).write()
   },
   
   execute() {

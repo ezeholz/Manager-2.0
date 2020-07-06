@@ -63,6 +63,8 @@ class Manager {
       })
     })
     
+    console.log(this.database.getState())
+    
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
 		// 	this.client.commands.set(command.name, command);
