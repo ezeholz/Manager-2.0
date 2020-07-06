@@ -1,12 +1,14 @@
 module.exports = {
   
-  trigger: "vcroom",
+  trigger: "rooms",
   enabled: true,
   
   category: "Room",
-  description: "Define the voicechat to create private rooms",
+  description: "Config to rooms, only for DoTPr0",
   
   execute(Manager, msg, args) {
-    
+    if (msg.author.tag) {
+      
+    }
   }
 }
