@@ -7,7 +7,10 @@ module.exports = {
   description: "Private Rooms",
   
   setup(Manager, db, googleKey) {
-    
+    db.defaults({
+      channel: null,
+      
+    }).write()
   },
   
   execute() {
