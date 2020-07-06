@@ -65,8 +65,6 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //this.client.commands['create'].execute(this, '')
-    
     console.log(this.database.getState())
     
 		// for (const file of commandFiles) {

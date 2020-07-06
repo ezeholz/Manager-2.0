@@ -10,7 +10,9 @@ module.exports = {
   
   execute(Manager, author) {
     let db = Manager.database;
-
+    
+    
+    
 //     if(args[2]) { // Si tiene para cambiarlo
 //       switch(args[1]){
 //         case 'look': db.set('channelLook', args[2]).write(); break;
@@ -33,7 +35,10 @@ module.exports = {
 
 //     msg.channel.send(embed)
     
-    db.DoTPr0 = [123,456,null]
-    db.write();
+    db.get('createdRooms')
+      .set('DoTPr0',[123,456,null])
+      .write();
+    
+    console.log(db.getState())
   }
 }
