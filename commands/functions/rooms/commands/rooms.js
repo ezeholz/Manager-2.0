@@ -19,16 +19,24 @@ module.exports = {
       
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'look': db.set('channelLook', args[2]); break;
-          case 'voice': db.set('voiceCategory', args[2]); break;
-          case 'text': db.set('textCategory', args[2]); break;
+          case 'look': db.set('channelLook', args[2]).write(); break;
+          case 'voice': db.set('voiceCategory', args[2]).write(); break;
+          case 'text': db.set('textCategory', args[2]).write(); break;
           default: break;
         }
       }
       
+      const values = db.getState()
+      
       const embed = new MessageEmbed()
         .setTitle('Valores actuales')
-        
+        .addFields(
+          {name: 'Channel to lookout', value: values.channelLook},
+          {name: 'Category for voice', value: values.voiceCategory},
+          {name: 'Category for text', value: values.textCategory},
+        )
+      
+      msg.channel.send(embed)
       
     } else {
       // Permisos insuficientes
