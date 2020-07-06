@@ -40,6 +40,8 @@ class Manager {
     commandFiles.forEach(mod => {
       fs.readdir(__dirname + '/functions/' + mod + '/commands/', (err, files) => {
         let error = false
+        let module = require(__dirname + '/functions/' + mod + '/module.js');
+        module.setup(Manager)
         files.forEach(file => {
           try {
             
