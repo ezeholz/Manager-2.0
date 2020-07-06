@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, GuildChannelManager } = require('discord.js')
 
 module.exports = {
   
@@ -15,7 +15,7 @@ module.exports = {
     
     if(values[author]===undefined) { // No tiene creada una sala
       
-      
+      Manager.client.channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
 
 //       if(args[2]) { // Si tiene para cambiarlo
 //         switch(args[1]){
