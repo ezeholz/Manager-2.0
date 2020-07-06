@@ -46,8 +46,8 @@ class Manager {
             
             let temp = require(__dirname + '/functions/' + mod + '/commands/' + file);
             
-            this.client.command[temp.trigger] = temp
-            this.client.command[temp.trigger].module = mod
+            this.client.commands[temp.trigger] = temp
+            this.client.commands[temp.trigger].module = mod
             
           } catch (err) {
             error = true
@@ -55,7 +55,7 @@ class Manager {
           }
         })
         if (!error) {
-          this.client.command[mod.trigger] = mod
+          this.client.commands[mod.trigger] = mod
         }
       })
     })
