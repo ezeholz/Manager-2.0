@@ -8,17 +8,17 @@ module.exports = {
   category: "Room",
   description: "Create rooms",
   
-  execute(Manager, author) {
+  execute(Manager, author, guild) {
     let db = Manager.database;
     
-    let values = db.getState()
+    const values = db.getState()
     
     if(values[author]===undefined) { // No tiene creada una sala
       
       let channels = Manager.client.guilds.resolve('425678929584455683').channels
       
-      channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
-      channels.create('prueba2', {'parent':values.textCategory,'type':'text'})
+      guild.channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
+      guild.channels.create('prueba2', {'parent':values.textCategory,'type':'text'})
 
 //       if(args[2]) { // Si tiene para cambiarlo
 //         switch(args[1]){

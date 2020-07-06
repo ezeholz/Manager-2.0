@@ -65,7 +65,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //console.log(this.database.getState())
+    console.log(this.database.getState())
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
@@ -99,11 +99,11 @@ class Manager {
       }
 		});
     
-    this.client.on('voiceStateUpdate', (old, neww) => {
-      const newUserChannel = neww.voiceChannel
-      const oldUserChannel = old.voiceChannel
+    this.client.on('voiceStateUpdate', (neww, old) => {
+      const newUserChannel = neww.channel
+      const oldUserChannel = old.channel
       
-      console.log(neww + ' ' + old)
+      console.log(newUserChannel + ' ' + oldUserChannel)
     })
 	}
 }
