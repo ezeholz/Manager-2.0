@@ -17,8 +17,15 @@ module.exports = {
       
       let channels = Manager.client.guilds.resolve('425678929584455683').channels
       
-      guild.channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
-      guild.channels.create('prueba2', {'parent':values.textCategory,'type':'text'})
+      const name = guild.member(author).displayName
+      
+      let created = []
+      
+      guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
+        .then(function(channel){
+          
+        })
+      guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
 
 //       if(args[2]) { // Si tiene para cambiarlo
 //         switch(args[1]){
