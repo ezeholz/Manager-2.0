@@ -75,6 +75,7 @@ class Manager {
 		this.client.once('ready', () => {  ///Status
 			console.log('Bot is ready!');
 			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
+      console.log(this.client.guilds)
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));

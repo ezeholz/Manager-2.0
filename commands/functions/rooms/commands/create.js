@@ -15,7 +15,10 @@ module.exports = {
     
     if(values[author]===undefined) { // No tiene creada una sala
       
-      Manager.client.channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
+      let channels = new GuildChannelManager()
+      
+      channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
+      channels.create('prueba2', {'parent':values.textCategory,'type':'text'})
 
 //       if(args[2]) { // Si tiene para cambiarlo
 //         switch(args[1]){
