@@ -13,14 +13,8 @@ module.exports = {
     
     const values = db.getState()
     
-    const embed = new MessageEmbed()
-        .setTitle('Valores actuales')
-        .addFields(
-          {name: 'Channel to lookout', value: values.channelLook},
-          {name: 'Category for voice', value: values.voiceCategory},
-          {name: 'Category for text', value: values.textCategory},
-        )
-        .setColor('#dada3d')
+    const embed = new MessageEmbed().setColor('#dada3d')
+        .setTitle(':no_entry_sign: Error')
       
       msg.channel.send(embed)
   },
