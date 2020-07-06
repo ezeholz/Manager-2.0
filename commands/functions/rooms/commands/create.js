@@ -21,20 +21,6 @@ module.exports = {
       
       let created = [null,null,null]
       
-      await guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
-        .then(function(channel){
-          created[0] = channel.id
-          author.setChannel(channel)
-        })
-      await guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
-        .then(function(channel){
-          created[1] = channel.id
-        })
-
-      db.get('createdRooms')
-        .set(author.id,created)
-        .write();
-      
 //       const embed = new MessageEmbed()
 //         .setTitle('Valores actuales')
 //         .addFields(
@@ -43,8 +29,23 @@ module.exports = {
 //           {name: 'Category for text', value: values.textCategory},
 //         )
 //         .setColor('#dada3d')
+      
+      await guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
+        .then(function(channel){
+          created[0] = channel.id
+          author.setChannel(channel)
+        })
+      await guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
+        .then(function(channel){
+          created[1] = channel.id
+          // Manager.client.channels.get(channel.id).send(embed)
+        })
 
-//       msg.channel.send(embed)
+      db.get('createdRooms')
+        .set(author.id,created)
+        .write();
+
+//       
     } else {
       author.setChannel(values.createdRooms[author.id][0])
     }
