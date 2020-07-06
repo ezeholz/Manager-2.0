@@ -19,6 +19,8 @@ class Manager {
 		this.discordToken = options.discordToken;
 		this.googleKey = options.googleKey;
 		this.prefix = options.prefix || '.'; //Prefix setup
+    
+    this.database = options.database;
 
 		this.queue = new Map();
 
@@ -36,8 +38,9 @@ class Manager {
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
     commandFiles.forEach(mod => {
-      let error = false
+      
       fs.readdir(__dirname + '/functions/' + mod + '/commands/', (err, files) => {
+        let error = false
         files.forEach(file => {
           try {
             
@@ -51,10 +54,10 @@ class Manager {
             console.error(mod + " / " + file + " Unable to load " + err)
           }
         })
+        if (!error) {
+          this.client.command[mod.trigger] = mod
+        }
       })
-      if (!error) {
-        this.client.command[mod.trigger] = mod
-      }
     })
     
 		// for (const file of commandFiles) {
@@ -73,9 +76,9 @@ class Manager {
       
 		});
     
-    this.client.on('voiceStateUpdate', (oldMember, newMember) => {
-      const newUserChannel = newMember.voiceChannel
-      const oldUserChannel = oldMember.voiceChannel
+    this.client.on('voiceStateUpdate', (old, neww) => {
+      const newUserChannel = neww.voiceChannel
+      const oldUserChannel = old.voiceChannel
       
       
     })
