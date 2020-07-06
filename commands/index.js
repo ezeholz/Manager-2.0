@@ -79,8 +79,10 @@ class Manager {
 
     this.client.on("unhandledRejection", e => console.error(e));
     
-    this.client.on('message', message => {
-      
+    this.client.on('message', msg => {
+      if(!msg.author.bot && msg.content.startsWith(this.prefix)) {
+        
+      }
 		});
     
     this.client.on('voiceStateUpdate', (old, neww) => {
