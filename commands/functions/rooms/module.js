@@ -8,8 +8,11 @@ module.exports = {
   
   setup(Manager, db, googleKey) {
     db.defaults({
-      channel: null,
-      
+      channelLook: null,
+      voiceCategory: null,
+      textCategory: null,
+      voiceActive: {},
+      textLinks: {},
     }).write()
   },
   
