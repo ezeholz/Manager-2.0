@@ -11,8 +11,7 @@ module.exports = {
       channelLook: null,
       voiceCategory: null,
       textCategory: null,
-      voiceActive: {},
-      textLinks: {},
+      ctives: {}
     }).write()
   },
   
