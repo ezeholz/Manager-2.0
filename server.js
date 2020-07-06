@@ -29,7 +29,3 @@ const musicBot = new MusicBot({
 });
 
 //musicBot.start();
-
-process.stdin.on('data', text => {
-  console.log(text)
-})
