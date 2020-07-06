@@ -15,7 +15,7 @@ module.exports = {
     
     if(values[author]===undefined) { // No tiene creada una sala
       
-      let channels = new GuildChannelManager()
+      let channels = Manager.client.guilds.resolve('425678929584455683').channels
       
       channels.create('prueba', {'parent':values.voiceCategory,'type':'voice'})
       channels.create('prueba2', {'parent':values.textCategory,'type':'text'})

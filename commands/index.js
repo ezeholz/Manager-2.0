@@ -65,7 +65,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    console.log(this.database.getState())
+    //console.log(this.database.getState())
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
@@ -75,7 +75,7 @@ class Manager {
 		this.client.once('ready', () => {  ///Status
 			console.log('Bot is ready!');
 			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
-      console.log(this.client.guilds)
+      //console.log(this.client.guilds.resolve('425678929584455683'))
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));
@@ -103,7 +103,7 @@ class Manager {
       const newUserChannel = neww.voiceChannel
       const oldUserChannel = old.voiceChannel
       
-      
+      console.log(neww + ' ' + old)
     })
 	}
 }
