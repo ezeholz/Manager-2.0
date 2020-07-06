@@ -65,7 +65,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    console.log(this.database.getState())
+    //console.log(this.database.getState())
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
@@ -99,11 +99,19 @@ class Manager {
       }
 		});
     
-    this.client.on('voiceStateUpdate', (neww, old) => {
-      const newUserChannel = neww.channel
-      const oldUserChannel = old.channel
+    this.client.on('voiceStateUpdate', (old, neww) => {
+      const newUserChannel = neww.channelID
+      const oldUserChannel = old.channelID
       
-      console.log(newUserChannel + ' ' + oldUserChannel)
+      if (this.client.commands['create'].enabled && this.client.commands['create'.module].enabled) {
+        
+      }
+      
+      //console.log(neww)
+      
+      if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
+        
+      }
     })
 	}
 }
