@@ -11,34 +11,39 @@ module.exports = {
   execute(Manager, author) {
     let db = Manager.database;
     
+    let values = db.getState()
     
-    
-//     if(args[2]) { // Si tiene para cambiarlo
-//       switch(args[1]){
-//         case 'look': db.set('channelLook', args[2]).write(); break;
-//         case 'voice': db.set('voiceCategory', args[2]).write(); break;
-//         case 'text': db.set('textCategory', args[2]).write(); break;
-//         default: break;
+    if(values[author]===undefined) { // No tiene creada una sala
+      
+      
+
+//       if(args[2]) { // Si tiene para cambiarlo
+//         switch(args[1]){
+//           case 'look': db.set('channelLook', args[2]).write(); break;
+//           case 'voice': db.set('voiceCategory', args[2]).write(); break;
+//           case 'text': db.set('textCategory', args[2]).write(); break;
+//           default: break;
+//         }
 //       }
-//     }
 
-//     const values = db.getState()
+//       const values = db.getState()
 
-//     const embed = new MessageEmbed()
-//       .setTitle('Valores actuales')
-//       .addFields(
-//         {name: 'Channel to lookout', value: values.channelLook},
-//         {name: 'Category for voice', value: values.voiceCategory},
-//         {name: 'Category for text', value: values.textCategory},
-//       )
-//       .setColor('#dada3d')
+//       const embed = new MessageEmbed()
+//         .setTitle('Valores actuales')
+//         .addFields(
+//           {name: 'Channel to lookout', value: values.channelLook},
+//           {name: 'Category for voice', value: values.voiceCategory},
+//           {name: 'Category for text', value: values.textCategory},
+//         )
+//         .setColor('#dada3d')
 
-//     msg.channel.send(embed)
-    
-    db.get('createdRooms')
-      .set('DoTPr0',[123,456,null])
-      .write();
-    
-    console.log(db.getState())
+//       msg.channel.send(embed)
+
+      db.get('createdRooms')
+        .set('DoTPr0',[123,456,null])
+        .write();
+
+      console.log(db.getState())
+    }
   }
 }
