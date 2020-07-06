@@ -6,7 +6,7 @@ module.exports = {
   category: "Base",
   description: "Send help to the chat",
   
-  execute(Manager, msg) {
+  execute(Manager, msg, args) {
     
   }
 }

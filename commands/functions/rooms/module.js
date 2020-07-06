@@ -17,7 +17,7 @@ module.exports = {
     }).write()
   },
   
-  execute() {
+  execute(Manager, msg, args) {
     
   },
 }

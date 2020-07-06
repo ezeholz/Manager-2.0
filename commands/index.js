@@ -83,10 +83,14 @@ class Manager {
     this.client.on('message', msg => {
       if(!msg.author.bot && msg.content.startsWith(this.prefix)) {
         const args = msg.content.slice(this.prefix.length).split(/ +/); //Slicing Prefix
-			  const command = args[0].toLowerCase();
+			  const command = this.client.commands[args[0].toLowerCase()];
         
-        if (this.client.commands[command]!==undefined) {
-          if ()
+        if (command!==undefined) {
+          if (command.enabled && command.module.enabled) {
+            command.execute(this, msg, args)
+          } else {
+            // No está encendido
+          }
         } else {
           // El comando no existe
         }

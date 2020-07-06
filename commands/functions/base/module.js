@@ -10,7 +10,7 @@ module.exports = {
     
   },
   
-  execute() {
+  execute(Manager, msg, args) {
     
   },
 }

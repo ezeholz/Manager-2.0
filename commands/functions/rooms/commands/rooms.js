@@ -6,7 +6,7 @@ module.exports = {
   category: "Room",
   description: "Define the voicechat to create private rooms",
   
-  execute(Manager, msg) {
+  execute(Manager, msg, args) {
     
   }
 }
