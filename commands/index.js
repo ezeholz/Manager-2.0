@@ -65,7 +65,9 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //console.log(this.database.getState().createdRooms.DoTPr0[2])
+    //this.client.commands['create'].execute(this, '')
+    
+    console.log(this.database.getState())
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);

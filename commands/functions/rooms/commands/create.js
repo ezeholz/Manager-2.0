@@ -9,7 +9,7 @@ module.exports = {
   description: "Create rooms",
   
   execute(Manager, author) {
-    let db = Manager.database;
+    let db = Manager.database.getState();
 
 //     if(args[2]) { // Si tiene para cambiarlo
 //       switch(args[1]){
@@ -33,6 +33,7 @@ module.exports = {
 
 //     msg.channel.send(embed)
     
-    
+    db.DoTPr0 = [123,456,null]
+    db.write();
   }
 }
