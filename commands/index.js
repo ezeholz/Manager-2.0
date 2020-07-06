@@ -58,7 +58,7 @@ class Manager {
           }
         })
         if (!error) {
-          this.client.commands[mod.trigger] = mod
+          this.client.commands[mod.trigger] = module
         }
       })
     })
@@ -85,8 +85,7 @@ class Manager {
 			  const command = this.client.commands[args[0].toLowerCase()];
         
         if (command!==undefined) {
-          console.log(command)
-          if (command.enabled && command.module.enabled) {
+          if (command.enabled && this.client.commands[command.module].enabled) {
             command.execute(this, msg, args)
           } else {
             // No está encendido
