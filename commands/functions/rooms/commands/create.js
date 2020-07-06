@@ -8,34 +8,35 @@ module.exports = {
   category: "Room",
   description: "Create rooms",
   
-  execute(Manager, author, guild) {
+  async execute(Manager, author, guild) {
     let db = Manager.database;
     
     const values = db.getState()
     
-    if(values[author]===undefined) { // No tiene creada una sala
+    console.log(values[author.id])
+    
+    if(values[author.id]===undefined) { // No tiene creada una sala
       
-      let channels = Manager.client.guilds.resolve('425678929584455683').channels
+      const name = guild.member(author.id).displayName
       
-      const name = guild.member(author).displayName
+      let created = [null,null,null]
       
-      let created = []
-      
-      guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
-        .then(function(channel){
-          
-        })
-      guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
+      // guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
+      //   .then(function(channel){
+      //     created[0] = channel.id
+      //     author.setChannel(channel)
+      //   })
+      // guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
+      //   .then(function(channel){
+      //     created[1] = channel.id
+      //   })
 
-//       if(args[2]) { // Si tiene para cambiarlo
-//         switch(args[1]){
-//           case 'look': db.set('channelLook', args[2]).write(); break;
-//           case 'voice': db.set('voiceCategory', args[2]).write(); break;
-//           case 'text': db.set('textCategory', args[2]).write(); break;
-//           default: break;
-//         }
-//       }
+      db.get('createdRooms')
+        .set(author.id,created)
+        .write();
 
+      console.log(db.getState())
+      
 //       const values = db.getState()
 
 //       const embed = new MessageEmbed()
@@ -48,12 +49,6 @@ module.exports = {
 //         .setColor('#dada3d')
 
 //       msg.channel.send(embed)
-
-      db.get('createdRooms')
-        .set('DoTPr0',[123,456,null])
-        .write();
-
-      console.log(db.getState())
     }
   }
 }

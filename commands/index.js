@@ -63,7 +63,7 @@ class Manager {
       })
     })
     
-    //this.database.setState({}).write()
+    //this.database.set('createdRooms',{}).write()
     
     //console.log(this.database.getState())
     
@@ -107,7 +107,7 @@ class Manager {
       
       if (command['create'].enabled && command[command['create'].module].enabled) {
         if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
-          command['create'].execute(this, neww.id, neww.guild)
+          command['create'].execute(this, neww, neww.guild)
         }
       }
       
