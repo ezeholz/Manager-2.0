@@ -34,6 +34,7 @@ class Manager {
   setup_() {
 		this.client = new Discord.Client();
 		this.client.commands = new Discord.Collection();  ///Command Handler
+    this.client.modules = [];
 
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
@@ -81,7 +82,14 @@ class Manager {
     
     this.client.on('message', msg => {
       if(!msg.author.bot && msg.content.startsWith(this.prefix)) {
+        const args = msg.content.slice(this.prefix.length).split(/ +/); //Slicing Prefix
+			  const command = args[0].toLowerCase();
         
+        if (this.client.commands[command]!==undefined) {
+          if ()
+        } else {
+          // El comando no existe
+        }
       }
 		});
     
