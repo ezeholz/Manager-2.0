@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js')
+
 module.exports = {
   
   trigger: "rooms",
@@ -17,19 +19,16 @@ module.exports = {
       
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'look': break;
-          case 'voice': break;
-          case 'text': break;
-          default: break;
-        }
-      } else {
-        switch(args[1]){
-          case 'look': break;
-          case 'voice': break;
-          case 'text': break;
+          case 'look': db.set('channelLook', args[2]); break;
+          case 'voice': db.set('voiceCategory', args[2]); break;
+          case 'text': db.set('textCategory', args[2]); break;
           default: break;
         }
       }
+      
+      const embed = new MessageEmbed()
+        .setTitle('Valores actuales')
+        
       
     } else {
       // Permisos insuficientes
