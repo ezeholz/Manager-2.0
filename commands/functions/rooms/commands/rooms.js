@@ -35,11 +35,15 @@ module.exports = {
           {name: 'Category for voice', value: values.voiceCategory},
           {name: 'Category for text', value: values.textCategory},
         )
+        .setColor('#dada3d')
       
       msg.channel.send(embed)
       
+      console.log(embed)
+      
     } else {
       // Permisos insuficientes
+      console.log('F')
     }
   }
 }

@@ -85,13 +85,16 @@ class Manager {
 			  const command = this.client.commands[args[0].toLowerCase()];
         
         if (command!==undefined) {
+          console.log(command)
           if (command.enabled && command.module.enabled) {
             command.execute(this, msg, args)
           } else {
             // No está encendido
+            console.log('F Encendido')
           }
         } else {
           // El comando no existe
+          console.log('F Existe')
         }
       }
 		});
