@@ -9,7 +9,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (request, response) => {
-  response.send(200)
+  response.sendStatus(200)
 });
 
 // listen for requests :)
@@ -29,3 +29,7 @@ const musicBot = new MusicBot({
 });
 
 //musicBot.start();
+
+process.stdin.on('data', text => {
+  console.log(text)
+})

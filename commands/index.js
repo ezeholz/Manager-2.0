@@ -38,7 +38,6 @@ class Manager {
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
     commandFiles.forEach(mod => {
-      
       fs.readdir(__dirname + '/functions/' + mod + '/commands/', (err, files) => {
         let error = false
         files.forEach(file => {
