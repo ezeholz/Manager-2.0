@@ -42,7 +42,7 @@ class Manager {
         let error = false
         
         let module = require(__dirname + '/functions/' + mod + '/module.js');
-        module.setup(this, this.client.commands, this.database, files)
+        module.setup(this, this.database, this.googleKey)
         
         files.forEach(file => {
           try {
