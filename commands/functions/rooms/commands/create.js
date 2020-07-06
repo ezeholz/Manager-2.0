@@ -9,7 +9,7 @@ module.exports = {
   description: "Create rooms",
   
   execute(Manager, author) {
-    let db = Manager.database.getState();
+    let db = Manager.database;
 
 //     if(args[2]) { // Si tiene para cambiarlo
 //       switch(args[1]){
