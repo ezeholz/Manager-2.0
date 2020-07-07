@@ -15,9 +15,9 @@ module.exports = {
     // }).write()
     
     db.defaults({
-      stream: null, // Canal de Youtube de Música
-      loop: false, // Si loopea
-      afk: null, // Voice de AFK (Para la musiquita)
+      lofi: null, // Canal de Youtube de Música
+      //loop: false, // Si loopea
+      lobby: null, // Voice de AFK (Para la musiquita)
     }).write()
     
     if(!googleKey) {

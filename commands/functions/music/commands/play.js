@@ -1,3 +1,4 @@
+const ytdl = require('ytdl-core');
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   description: "Plays Music",
   
   execute(Manager, msg, args) {
-    if (+msg.author.id === 425678561295335425) {
+    if (+msg.author.id === Manager.botAuthor) {
       /* 
       Este es un comando admin, por ende voy a detectar cuando soy yo el que lo usa, para que nadie más pueda cambiar eso
       Podría ponerle un generador de códigos, y que imprima el código por acá, tengo que ver todavía.
@@ -19,9 +20,8 @@ module.exports = {
       
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'look': db.set('channelLook', args[2]).write(); break;
-          case 'voice': db.set('voiceCategory', args[2]).write(); break;
-          case 'text': db.set('textCategory', args[2]).write(); break;
+          case 'stream': db.set('lofi', args[2]).write(); break;
+          case 'lobby': db.set('lobby', args[2]).write(); break;
           default: break;
         }
       }
@@ -31,10 +31,19 @@ module.exports = {
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
         .addFields(
-          {name: 'Channel to lookout', value: values.channelLook},
-          {name: 'Category for voice', value: values.voiceCategory},
-          {name: 'Category for text', value: values.textCategory},
+          {name: 'Stream selected', value: values.lofi},
+          {name: 'Lobby voice channel', value: values.lobby},
         )
+      
+      if (values.lofi && values.lobby && ytdl.validateURL(values.lofi)) {
+        Manager.client.channels.fetch(values.lobby).then(channel => {
+          const dispatcher = serverQueue.connection.playStream(ytdl(song.url, {
+            filter: 'audioonly',
+            quality: 'highestaudio',
+            highWaterMark: 10 << 25
+          })
+        })
+      }
       
       msg.channel.send(embed)
       

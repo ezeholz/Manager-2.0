@@ -67,6 +67,8 @@ class Manager {
     
     //this.database.setState({}).write()
     
+    //this.database.unset('loop').write()
+    
     //this.database.set('createdRooms',{}).write()
     
     console.log(this.database.getState())
