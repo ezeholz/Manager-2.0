@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js')
 
 class Manager {
 	/**
@@ -81,6 +82,10 @@ class Manager {
 
     this.client.on("unhandledRejection", e => console.error(e));
     
+    // ------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------Message---------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------
+    
     this.client.on('message', msg => {
       if(!msg.author.bot && msg.content.startsWith(this.prefix)) {
         const args = msg.content.slice(this.prefix.length).split(/ +/); //Slicing Prefix
@@ -90,15 +95,25 @@ class Manager {
           if (command.enabled && this.client.commands[command.module].enabled) {
             command.execute(this, msg, args)
           } else {
-            // No está encendido
-            console.log('F Encendido')
+            const embed = new MessageEmbed().setColor('#dada3d')
+              .setTitle(':no_entry_sign: Uf, Big F Time')
+              .setDescription('Capaz no te lo crees cuando te lo diga, pero este comando no está habilitado.')
+
+            msg.channel.send(embed)
           }
         } else {
-          // El comando no existe
-          console.log('F Existe')
+          const embed = new MessageEmbed().setColor('#dada3d')
+            .setTitle(':no_entry_sign: Flashaste amego')
+            .setDescription('Ey bro, buena imaginación, pero ese comando no existe.')
+
+          msg.channel.send(embed)
         }
       }
 		});
+    
+    // ------------------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------Voice----------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------
     
     this.client.on('voiceStateUpdate', (old, neww) => {
       const newUserChannel = neww.channelID

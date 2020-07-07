@@ -32,8 +32,9 @@ module.exports = {
       const embed = new MessageEmbed()
         .setTitle('<:CarryMe:505991252311932929> Comandos')
         .addFields(
-          {name: '.invite ', value: '', inline: true},{name: 'Category for voice', value: '', inline: true},
-          {name: 'Category for text', value: values.textCategory},
+          {name: '.invite [Usuario]', value: 'Invitar a un usuario a tu sala'},
+          {name: '.kick [Usuario]', value: 'Sacar a un usuario de tu sala'},
+          {name: '.remove', value: 'Borrar la sala'},
         )
         .setColor('#dada3d')
       
@@ -45,7 +46,7 @@ module.exports = {
       await guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
         .then(function(channel){
           created[1] = channel.id
-          // channel.send(embed)
+          channel.send(embed)
         })
 
       db.get('createdRooms')
