@@ -67,9 +67,9 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //this.database.unset('timerRooms').write()
+    //this.database.unset('lofi').write()
     
-    //this.database.set('timerRooms',{}).write()
+    //this.database.set('createdRooms',{}).write()
     
     console.log(this.database.getState())
     
@@ -81,8 +81,17 @@ class Manager {
 		this.client.once('ready', () => {  ///Status
 			console.log('Bot is ready!');
 			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
+      
+      // Music as start
+      
       if (this.client.commands['music'].enabled && this.client.commands['play'].enabled) {
         this.client.commands['play'].start(this)
+      }
+      
+      if (this.client.commands['rooms'].enabled && this.client.commands['room'].enabled) {
+        setInterval(() => {
+          this.client.commands['room'].remove(this)
+        },60*1000)
       }
 		});
 

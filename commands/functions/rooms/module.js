@@ -14,15 +14,6 @@ module.exports = {
       createdRooms: {}, // Salas activas ex: {'DoTPr0': [audio,texto,date]}
     }).write()
     
-    if(this.enabled){
-      setInterval((Manager) => {
-        Manager.client.commands['room'].remove(this)
-        console.log('OK')
-      },15*1000)
-    }
-    
-    
-    
   },
   
   execute(Manager, msg, args) {
