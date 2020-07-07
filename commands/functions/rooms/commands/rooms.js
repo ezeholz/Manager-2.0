@@ -39,7 +39,9 @@ module.exports = {
       msg.channel.send(embed)
       
     } else {
-      // Permisos insuficientes
+      embed.setTitle(':no_entry_sign: Sacá la mano de ahí')
+        .setDescription('Brou, pero ni sala tenés creada. Sacá la mano de ahí carajo.')
+      msg.channel.send(embed)
     }
   }
 }
