@@ -14,10 +14,14 @@ module.exports = {
       createdRooms: {}, // Salas activas ex: {'DoTPr0': [audio,texto,date]}
     }).write()
     
-    setInterval(function TimerRooms(Manager) {
-      Manager.client.commands['room'].remove(this)
-      set
-    },60*1000)
+    if(this.enabled){
+      setInterval((Manager) => {
+        Manager.client.commands['room'].remove(this)
+        console.log('OK')
+      },15*1000)
+    }
+    
+    
     
   },
   

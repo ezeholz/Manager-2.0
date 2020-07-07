@@ -67,9 +67,9 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //this.database.unset('lofi').write()
+    //this.database.unset('timerRooms').write()
     
-    //this.database.set('createdRooms',{}).write()
+    //this.database.set('timerRooms',{}).write()
     
     console.log(this.database.getState())
     

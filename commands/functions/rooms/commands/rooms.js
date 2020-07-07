@@ -53,12 +53,8 @@ module.exports = {
     const values = Object.entries(db.get('createdRooms').value())
     
     values.forEach(room => {
-      console.log('Room '+room)
       Manager.client.channels.fetch(room[1][0]).then(e => {
-        console.log('e '+e)
-        console.log(e.members.array().length)
         if(!e.members.array().length) { // Si la sala no tiene personas
-          console.log(room[1][2])
           if(room[1][2]===null) {
             db.get('createdRooms')
               .set(room[0],[room[1][0],room[1][1],today])
