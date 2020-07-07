@@ -29,4 +29,4 @@ const musicBot = new MusicBot({
   botAuthor: process.env.AUTHOR
 });
 
-musicBot.start();
+//musicBot.start();
