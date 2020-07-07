@@ -28,8 +28,8 @@ module.exports = {
               embed.setTitle('<a:rainbowfrog:505995805321330688> ' + user.username + ' se nos ha unido a la party')
               msg.channel.send(embed)
             } else {
-              embed.setTitle('<a:wtf_plain:505995803035172874> A quienes meto?')
-                .setDescription('Marcame a quiénes meto, crack fiera bestia titán. No soy adivina todavía.')
+              embed.setTitle('<a:nicmoji_smile:505995808810729490> No bueno.. Un bot?')
+                .setDescription('Capo Masterchef, no creo que un bot sea tu amigo. Capaz solo te dejó en la friendzone.')
               msg.channel.send(embed)
             }
           })
