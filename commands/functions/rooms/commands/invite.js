@@ -22,10 +22,16 @@ module.exports = {
         console.log(users)
         if(users.array().length){
           users.forEach(function(user){
-            msg.channel.createOverwrite(user,{ VIEW_CHANNEL: true })
-            Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
-            embed.setTitle('<a:rainbowfrog:505995805321330688> ' + user.username + ' se nos ha unido a la party')
-            msg.channel.send(embed)
+            if(!user.bot) {
+              msg.channel.createOverwrite(user,{ VIEW_CHANNEL: true })
+              Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
+              embed.setTitle('<a:rainbowfrog:505995805321330688> ' + user.username + ' se nos ha unido a la party')
+              msg.channel.send(embed)
+            } else {
+              embed.setTitle('<a:wtf_plain:505995803035172874> A quienes meto?')
+                .setDescription('Marcame a quiénes meto, crack fiera bestia titán. No soy adivina todavía.')
+              msg.channel.send(embed)
+            }
           })
         } else {
           embed.setTitle('<a:wtf_plain:505995803035172874> A quienes meto?')
