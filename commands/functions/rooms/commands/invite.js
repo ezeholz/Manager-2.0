@@ -24,14 +24,13 @@ module.exports = {
           users.forEach(function(user){
             msg.channel.createOverwrite(user,{ VIEW_CHANNEL: true })
             Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
-            embed.setTitle('<a:rainbowfrog:505995805321330688> ')
-              .setDescription('Para confirmar, por favor usar el comando .remove confirm')
+            embed.setTitle('<a:rainbowfrog:505995805321330688> ' + user.username + ' se nos ha unido a la party')
             msg.channel.send(embed)
           })
         } else {
-          Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.delete()})
-          msg.channel.delete()
-          values.createdRooms[msg.author.id] = undefined
+          embed.setTitle('<a:wtf_plain:505995803035172874> A quienes meto?')
+            .setDescription('Tranquiiiilo, estás en otra sala. Probá de nuevo en la tuya.')
+          msg.channel.send(embed)
         }
       } else {
         embed.setTitle(':no_entry_sign: Esta no es tu sala crack')
