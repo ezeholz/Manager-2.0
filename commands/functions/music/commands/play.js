@@ -20,11 +20,11 @@ module.exports = {
       
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'stream': db.set('lofi', args[2]).write(); break;
+          case 'stream': db.get('lofi').push(args[2]).write(); break;
           case 'lobby': db.set('lobby', args[2]).write(); break;
           default: break;
         }
-      }
+      } else if (args[1]==='stream') {db.set('lofi', []).write()}
       
       const values = db.getState()
       
@@ -35,25 +35,7 @@ module.exports = {
           {name: 'Lobby voice channel', value: values.lobby},
         )
       
-      if (values.lofi && values.lobby && ytdl.validateURL(values.lofi)) {
-        Manager.client.channels.fetch(values.lobby).then(channel => {
-          channel.join().then(dispatcher => {
-            dispatcher.voice.setMute(false)
-            dispatcher.play(ytdl(values.lofi, {
-              filter: 'audioonly',
-              quality: 'highestaudio',
-              highWaterMark: 10 << 25
-            }),{volume:0.4,bitrate:'auto'})
-            .on('end', () => {
-              dispatcher.play(ytdl(values.lofi, {
-                filter: 'audioonly',
-                quality: 'highestaudio',
-                highWaterMark: 10 << 25
-              }),{volume:0.4,bitrate:'auto'})
-            })
-          })
-        })
-      }
+      this.start(Manager)
       
       msg.channel.send(embed)
       
@@ -62,6 +44,32 @@ module.exports = {
         .setTitle(':no_entry_sign: Andateeeee')
         .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       msg.channel.send(embed)
+    }
+  },
+  start(Manager) {
+    let db = Manager.database;
+    const values = db.getState()
+    
+    if (values.lofi && values.lobby && ytdl.validateURL(values.lofi)) {
+      Manager.client.channels.fetch(values.lobby).then(channel => {
+        channel.join().then(dispatcher => {
+          dispatcher.voice.setMute(false)
+          dispatcher.play(ytdl(values.lofi, {
+            filter: 'audioonly',
+            quality: 'highestaudio',
+            highWaterMark: 10 << 25
+          }),{volume:0.4,bitrate:'auto'})
+          .on('end', () => {
+            dispatcher.play(ytdl(values.lofi, {
+              filter: 'audioonly',
+              quality: 'highestaudio',
+              highWaterMark: 10 << 25
+            }),{volume:0.4,bitrate:'auto'})
+          })
+        })
+      })
+    } else {
+      console.log('No se pudo reproducir')
     }
   }
 }

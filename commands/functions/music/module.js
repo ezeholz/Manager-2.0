@@ -15,7 +15,7 @@ module.exports = {
     // }).write()
     
     db.defaults({
-      lofi: null, // Canal de Youtube de Música
+      lofi: [], // Canal de Youtube de Música
       //loop: false, // Si loopea
       lobby: null, // Voice de AFK (Para la musiquita)
     }).write()
