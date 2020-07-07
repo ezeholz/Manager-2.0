@@ -86,6 +86,10 @@ class Manager {
 			console.log('Bot is ready!');
 			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
       
+      if (this.client.commands['base'].enabled && this.client.commands['log'].enabled) {
+        this.client.commands['log'].log(this,'Bot Reiniciado')
+      }
+      
       // Music as start
       
       if (this.client.commands['music'].enabled && this.client.commands['play'].enabled) {

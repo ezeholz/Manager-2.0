@@ -39,9 +39,12 @@ module.exports = {
   log(Manager,msg) {
     let db = Manager.database;
     
+    const values = db.getState()
     
-    const embed = new MessageEmbed().setColor('#dada3d')
-      .setDescription(msg)
-    Manager.client.channels.fetch(log).then(channel => {channel.send(embed)})
+    if(values.log!==null){
+      const embed = new MessageEmbed().setColor('#dada3d')
+        .setDescription(msg)
+      Manager.client.channels.fetch(values.log).then(channel => {channel.send(embed)})
+    }
   }
 }
