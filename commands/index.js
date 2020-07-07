@@ -9,8 +9,8 @@ class Manager {
 	 * Place Discord Token And Google API Key in musicbot.js {Mandatory}
 	 */
 	constructor(options) {
-		if (!options || !options.discordToken) {
-			throw new Error('Discord Token is Missing');
+		if (!options || !options.discordToken || !options.botAuthor) {
+			throw new Error('Discord Token or Author is Missing');
 		}
     
     if (!options.googleKey) {
@@ -20,6 +20,7 @@ class Manager {
 		this.discordToken = options.discordToken;
 		this.googleKey = options.googleKey;
 		this.prefix = options.prefix || '.'; //Prefix setup
+    this.botAuthor = options.botAuthor;
     
     this.database = options.database;
 

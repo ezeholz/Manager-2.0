@@ -14,11 +14,11 @@ module.exports = {
     //   createdRooms: {}, // Salas activas ex: {'DoTPr0': [audio,texto,date]}
     // }).write()
     
-    // db.defaults({
-    //   stream: null, // Canal de Youtube de Música
-    //   loop: false, // Si loopea
-    //   afk: null, // Voice de AFK (Para la musiquita)
-    // }).write()
+    db.defaults({
+      stream: null, // Canal de Youtube de Música
+      loop: false, // Si loopea
+      afk: null, // Voice de AFK (Para la musiquita)
+    }).write()
     
     if(!googleKey) {
       this.enabled = false

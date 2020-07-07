@@ -26,6 +26,7 @@ const musicBot = new MusicBot({
   googleKey: process.env.YOUTUBE_TOKEN,
   prefix: process.env.PREFIX,
   database: db,
+  botAuthor: process.env.AUTHOR
 });
 
 //musicBot.start();
