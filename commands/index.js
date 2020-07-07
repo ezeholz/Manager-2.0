@@ -71,7 +71,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    //this.database.unset('lofi').write()
+    //this.database.unset('streams').write()
     
     //this.database.set('createdRooms',{}).write()
     

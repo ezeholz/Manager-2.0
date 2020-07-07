@@ -1,4 +1,4 @@
-
+const fetch = require('node-fetch')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
@@ -50,5 +50,12 @@ module.exports = {
         .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       msg.channel.send(embed)
     }
+  },
+  check(Manager){
+    const today = Date.now()
+    
+    let db = Manager.database;
+    
+    const values = Object.entries(db.get('streams'))
   }
 }

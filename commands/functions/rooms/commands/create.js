@@ -21,8 +21,6 @@ module.exports = {
     
     const values = db.getState()
     
-    console.log(values.createdRooms[author.id])
-    
     if(values.createdRooms[author.id]===undefined) { // No tiene creada una sala
       
       const name = guild.member(author.id).displayName
