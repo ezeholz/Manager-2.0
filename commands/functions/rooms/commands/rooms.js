@@ -60,7 +60,7 @@ module.exports = {
               .set(room[0],[room[1][0],room[1][1],today])
               .write()
             return
-          } else if (Math.floor((today-room[1][2])/60000)>1){
+          } else if (Math.floor((today-room[1][2])/60000)>10){
             Manager.client.channels.fetch(room[1][0]).then(channel => {console.log(channel);channel.delete()})
             Manager.client.channels.fetch(room[1][1]).then(channel => {console.log(channel);channel.delete()})
             db.get('createdRooms').set(room[0],undefined).write()
