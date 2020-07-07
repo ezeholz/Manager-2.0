@@ -60,7 +60,7 @@ class Manager {
           }
         })
         if (!error) {
-          this.client.commands[mod.trigger] = module
+          this.client.commands[module.trigger] = module
         }
       })
     })
@@ -95,7 +95,6 @@ class Manager {
 			  const command = this.client.commands[args[0].toLowerCase()];
         
         if (command!==undefined) {
-          console.log(command.module)
           if (command.enabled && this.client.commands[command.module].enabled) {
             command.execute(this, msg, args)
           } else {
