@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
-  trigger: "remove",
+  trigger: "invite",
   enabled: true,
   
   category: "Room",
@@ -17,7 +17,7 @@ module.exports = {
     const values = db.getState()
     
     if(values.createdRooms[msg.author.id]!==undefined) {
-      if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
+      if(+msg.channel.id === +values.createdRooms[msg.author.id][1]) {
         let users = msg.mentions.users
         if(users){
           for(let i = 0;i<users.lenght;i++){

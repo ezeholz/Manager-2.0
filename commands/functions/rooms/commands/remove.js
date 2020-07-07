@@ -17,13 +17,13 @@ module.exports = {
     const values = db.getState()
     
     if(values.createdRooms[msg.author.id]!==undefined) {
-      if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
+      if(+msg.channel.id === +values.createdRooms[msg.author.id][1]) {
         if(args[1]===undefined){
           embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
             .setDescription('Para confirmar, por favor usar el comando .remove confirm')
           msg.channel.send(embed)
         } else {
-          Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.delete()})
+          Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
           msg.channel.delete()
           values.createdRooms[msg.author.id] = undefined
         }

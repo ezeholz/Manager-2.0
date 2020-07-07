@@ -67,7 +67,7 @@ class Manager {
     
     //this.database.set('createdRooms',{}).write()
     
-    //console.log(this.database.getState())
+    console.log(this.database.getState())
     
 		// for (const file of commandFiles) {
 		// 	const command = require(`./commands/${file}`);
