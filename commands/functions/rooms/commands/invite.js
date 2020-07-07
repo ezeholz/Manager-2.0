@@ -6,7 +6,7 @@ module.exports = {
   enabled: true,
   
   category: "Room",
-  description: "Remove rooms",
+  description: "Invite to your room",
   
   execute(Manager, msg, args) {
     
