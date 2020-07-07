@@ -23,9 +23,8 @@ module.exports = {
             .setDescription('Para confirmar, por favor usar el comando .remove confirm')
           msg.channel.send(embed)
         } else {
-          let user = 
           Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
-          values.createdRooms[msg.author.id] = undefined
+          db.get('createdRooms').set(msg.author.id,undefined).write()
           msg.channel.delete()
         }
       } else {
