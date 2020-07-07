@@ -24,8 +24,8 @@ module.exports = {
           msg.channel.send(embed)
         } else {
           Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
-          msg.channel.delete()
           values.createdRooms[msg.author.id] = undefined
+          msg.channel.delete()
         }
       } else {
         embed.setTitle(':no_entry_sign: Esta no es tu sala crack')
