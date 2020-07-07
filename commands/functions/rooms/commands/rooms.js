@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
-  trigger: "rooms",
+  trigger: "room",
   enabled: true,
   
   category: "Room",
@@ -45,17 +45,17 @@ module.exports = {
       msg.channel.send(embed)
     }
   },
-  remove(Manager, msg){
+  remove(Manager){
     const today = Date.now()
     
     let db = Manager.database;
     
-    const values = db.getState()
+    const values = Object.entries(db.get('createdRooms')
     
-    values.createdRooms.
+    console.log(values)
     
-    Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
-    Manager.client.channels.fetch(values.createdRooms[msg.author.id][1]).then(channel => {console.log(channel);channel.delete()})
-    db.get('createdRooms').set(msg.author.id,undefined).write()
+    // Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
+    // Manager.client.channels.fetch(values.createdRooms[msg.author.id][1]).then(channel => {console.log(channel);channel.delete()})
+    // db.get('createdRooms').set(msg.author.id,undefined).write()
   }
 }
