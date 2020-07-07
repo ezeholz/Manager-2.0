@@ -10,8 +10,8 @@ module.exports = {
   
   execute(Manager, msg, args) {
     const embed = new MessageEmbed().setColor('#dada3d')
-      .setTitle(':no_entry_sign: Error')
-      .setDescription('Este comando está reservado solo para el chat de voz y no puede ser invocado')
+        .setTitle(':no_entry_sign: Andateeeee')
+        .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       
     msg.channel.send(embed)
   },
@@ -29,14 +29,13 @@ module.exports = {
       
       let created = [null,null,null]
       
-      // const embed = new MessageEmbed()
-      //   .setTitle('Valores actuales')
-      //   .addFields(
-      //     {name: 'Channel to lookout', value: values.channelLook},
-      //     {name: 'Category for voice', value: values.voiceCategory},
-      //     {name: 'Category for text', value: values.textCategory},
-      //   )
-      //   .setColor('#dada3d')
+      const embed = new MessageEmbed()
+        .setTitle('<:CarryMe:505991252311932929> Comandos')
+        .addFields(
+          {name: '.invite ', value: '', inline: true},{name: 'Category for voice', value: '', inline: true},
+          {name: 'Category for text', value: values.textCategory},
+        )
+        .setColor('#dada3d')
       
       await guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
         .then(function(channel){

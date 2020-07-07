@@ -39,8 +39,9 @@ module.exports = {
       msg.channel.send(embed)
       
     } else {
-      embed.setTitle(':no_entry_sign: Sacá la mano de ahí')
-        .setDescription('Brou, pero ni sala tenés creada. Sacá la mano de ahí carajo.')
+      const embed = new MessageEmbed().setColor('#dada3d')
+        .setTitle(':no_entry_sign: Andateeeee')
+        .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       msg.channel.send(embed)
     }
   }
