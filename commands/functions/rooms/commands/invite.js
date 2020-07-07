@@ -20,7 +20,7 @@ module.exports = {
       if(+msg.channel.id === +values.createdRooms[msg.author.id][1]) {
         let users = msg.mentions.users
         console.log(users)
-        if(users){
+        if(users.array().length){
           users.forEach(function(user){
             msg.channel.createOverwrite(user,{ VIEW_CHANNEL: true })
             Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
@@ -29,7 +29,7 @@ module.exports = {
           })
         } else {
           embed.setTitle('<a:wtf_plain:505995803035172874> A quienes meto?')
-            .setDescription('Tranquiiiilo, estás en otra sala. Probá de nuevo en la tuya.')
+            .setDescription('Marcame a quiénes meto, crack fiera bestia titán. No soy adivina todavía.')
           msg.channel.send(embed)
         }
       } else {

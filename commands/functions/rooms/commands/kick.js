@@ -20,7 +20,7 @@ module.exports = {
       if(+msg.channel.id === +values.createdRooms[msg.author.id][1]) {
         let users = msg.mentions.users
         console.log(users)
-        if(users){
+        if(users.array().length){
           users.forEach(function(user){
             msg.channel.permissionOverwrites.get(user.id).delete()
             Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.permissionOverwrites.get(user.id).delete()})

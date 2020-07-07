@@ -28,4 +28,4 @@ const musicBot = new MusicBot({
   database: db,
 });
 
-//musicBot.start();
+musicBot.start();
