@@ -20,7 +20,8 @@ module.exports = {
       if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
         let user = msg.mentions.users.first()
         if(user){
-          
+          msg.createOverwrite(user,{ VIEW_CHANNEL: true })
+          Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
           embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
             .setDescription('Para confirmar, por favor usar el comando .remove confirm')
           msg.channel.send(embed)
