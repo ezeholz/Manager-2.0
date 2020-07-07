@@ -1,4 +1,4 @@
-const { MessageEmbed, GuildChannelManager } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
@@ -16,7 +16,7 @@ module.exports = {
     if(values.createdRooms[msg.author.id]!==undefined) {
       if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
         if(args[1]===undefined){
-          
+          // Verificación de borrado
         } else {
           
         }
@@ -24,7 +24,7 @@ module.exports = {
         // Está en otra sala
       }
     } else {
-      // No tienen salas creadas
+      // No tiene salas creadas
     }
     
 //       const embed = new MessageEmbed().setColor('#dada3d')
