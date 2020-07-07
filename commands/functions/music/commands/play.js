@@ -47,23 +47,26 @@ module.exports = {
     }
   },
   start(Manager) {
-    const values = Manager.database.get()
-    let r = Math.floor(Math.random()*values.lofi.lenght)
+    const lofi = Manager.database.get('lofi')
+    const lobby = Manager.database.get('lobby').value()
     
-    console.log(values.lofi.size())
+    let r = Math.floor(Math.random()*lofi.size().value())
+    let song = lofi.get(r)
     
-    if (values.lofi.lenght && values.lobby && ytdl.validateURL(values.lofi[r])) {
-      Manager.client.channels.fetch(values.lobby).then(channel => {
+    console.olo
+    
+    if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
+      Manager.client.channels.fetch(lobby).then(channel => {
         channel.join().then(dispatcher => {
           dispatcher.voice.setMute(false)
-          dispatcher.play(ytdl(values.lofi[r], {
+          dispatcher.play(ytdl(song, {
             filter: 'audioonly',
             quality: 'highestaudio',
             highWaterMark: 10 << 25
           }),{volume:0.4,bitrate:'auto'})
           .on('end', () => {
-            r = Math.floor(Math.random()*values.lofi.lenght)
-            dispatcher.play(ytdl(values.lofi[r], {
+            r = Math.floor(Math.random()*lofi.size().value())
+            dispatcher.play(ytdl(song, {
               filter: 'audioonly',
               quality: 'highestaudio',
               highWaterMark: 10 << 25
