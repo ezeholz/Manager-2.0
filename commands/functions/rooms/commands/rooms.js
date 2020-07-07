@@ -50,9 +50,17 @@ module.exports = {
     
     let db = Manager.database;
     
-    const values = Object.entries(db.get('createdRooms')
+    const values = Object.entries(db.get('createdRooms').value())
     
-    console.log(values)
+    values.forEach(room => {
+      Manager.client.channels.fetch(room[1][0]).then(e => {
+        if(!e.members.array().length) { // Si la sala no tiene personas
+          if(room[1][2]===null) {
+            db.get('createdR')
+          }
+        }
+      })
+    })
     
     // Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
     // Manager.client.channels.fetch(values.createdRooms[msg.author.id][1]).then(channel => {console.log(channel);channel.delete()})
