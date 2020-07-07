@@ -95,6 +95,7 @@ class Manager {
 			  const command = this.client.commands[args[0].toLowerCase()];
         
         if (command!==undefined) {
+          console.log(command.module)
           if (command.enabled && this.client.commands[command.module].enabled) {
             command.execute(this, msg, args)
           } else {

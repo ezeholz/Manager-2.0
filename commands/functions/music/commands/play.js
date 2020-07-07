@@ -37,10 +37,12 @@ module.exports = {
       
       if (values.lofi && values.lobby && ytdl.validateURL(values.lofi)) {
         Manager.client.channels.fetch(values.lobby).then(channel => {
-          const dispatcher = serverQueue.connection.playStream(ytdl(song.url, {
-            filter: 'audioonly',
-            quality: 'highestaudio',
-            highWaterMark: 10 << 25
+          channel.join().then(dispatcher => {
+              dispatcher.play(ytdl(values.lofi, {
+              filter: 'audioonly',
+              quality: 'highestaudio',
+              highWaterMark: 10 << 25
+            }))
           })
         })
       }

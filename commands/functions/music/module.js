@@ -21,7 +21,7 @@ module.exports = {
     }).write()
     
     if(!googleKey) {
-      this.enabled = false
+      //this.enabled = false
     }
     
   },
