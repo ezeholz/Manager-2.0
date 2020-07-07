@@ -84,7 +84,6 @@ class Manager {
       if (this.client.commands['music'].enabled && this.client.commands['play'].enabled) {
         this.client.commands['play'].start(this)
       }
-      this.client.commands['room'].remove(this)
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));

@@ -57,22 +57,27 @@ module.exports = {
       Manager.client.channels.fetch(room[1][0]).then(e => {
         console.log('e '+e)
         console.log(e.members.array().length)
-        if(e.members.array().length===0) { // Si la sala no tiene personas
+        if(!e.members.array().length) { // Si la sala no tiene personas
           console.log(room[1][2])
           if(room[1][2]===null) {
             db.get('createdRooms')
               .set(room[0],[room[1][0],room[1][1],today])
               .write()
             return
-          } else if ((today-room[1][2])){
-            
+          } else if (Math.floor((today-room[1][2])/60000)>1){
+            Manager.client.channels.fetch(room[1][0]).then(channel => {console.log(channel);channel.delete()})
+            Manager.client.channels.fetch(room[1][1]).then(channel => {console.log(channel);channel.delete()})
+            db.get('createdRooms').set(room[0],undefined).write()
+          }
+        } else {
+          if(room[1][2]!==null) {
+            db.get('createdRooms')
+              .set(room[0],[room[1][0],room[1][1],null])
+              .write()
+            return
           }
         }
       })
     })
-    
-    // Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {console.log(channel);channel.delete()})
-    // Manager.client.channels.fetch(values.createdRooms[msg.author.id][1]).then(channel => {console.log(channel);channel.delete()})
-    // db.get('createdRooms').set(msg.author.id,undefined).write()
   }
 }

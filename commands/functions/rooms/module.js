@@ -13,6 +13,12 @@ module.exports = {
       textCategory: null, // Categoría para crear los de texto
       createdRooms: {}, // Salas activas ex: {'DoTPr0': [audio,texto,date]}
     }).write()
+    
+    setInterval(function TimerRooms(Manager) {
+      Manager.client.commands['room'].remove(this)
+      set
+    },60*1000)
+    
   },
   
   execute(Manager, msg, args) {
