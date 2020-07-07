@@ -13,11 +13,29 @@ module.exports = {
     
     const values = db.getState()
     
-    const embed = new MessageEmbed().setColor('#dada3d')
-      .setTitle(':no_entry_sign: Error')
-      .setDescription('Este comando está reservado solo para el chat de voz y no puede ser invocado')
+    if(values.createdRooms[msg.author.id]!==undefined) {
+      if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
+        if(args[1]===undefined){
+          
+        } else {
+          
+        }
+      } else {
+        // Está en otra sala
+      }
+    } else {
+      // No tienen salas creadas
+    }
+    
+//       const embed = new MessageEmbed().setColor('#dada3d')
+//         .setTitle('Valores actuales')
+//         .addFields(
+//           {name: 'Channel to lookout', value: values.channelLook},
+//           {name: 'Category for voice', value: values.voiceCategory},
+//           {name: 'Category for text', value: values.textCategory},
+//         )
       
-    msg.channel.send(embed)
+    // msg.channel.send(embed)
   },
   
 //   async voice(Manager, author, guild) {

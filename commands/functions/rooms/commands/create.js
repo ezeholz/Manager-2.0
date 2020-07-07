@@ -9,10 +9,6 @@ module.exports = {
   description: "Create rooms",
   
   execute(Manager, msg, args) {
-    let db = Manager.database;
-    
-    const values = db.getState()
-    
     const embed = new MessageEmbed().setColor('#dada3d')
       .setTitle(':no_entry_sign: Error')
       .setDescription('Este comando está reservado solo para el chat de voz y no puede ser invocado')
