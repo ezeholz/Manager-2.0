@@ -2,11 +2,11 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
-  trigger: "invite",
+  trigger: "kick",
   enabled: true,
   
   category: "Room",
-  description: "Invite to your room",
+  description: "Kick from your room",
   
   execute(Manager, msg, args) {
     
@@ -22,9 +22,9 @@ module.exports = {
         console.log(users)
         if(users){
           users.forEach(function(user){
-            msg.channel.createOverwrite(user,{ VIEW_CHANNEL: true })
-            Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.createOverwrite(user,{ CONNECT: true })})
-            embed.setTitle('<a:rainbowfrog:505995805321330688> ')
+            msg.channel.permissionOverwrites.get(user.id).delete()
+            Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.permissionOverwrites.get(user.id).delete()})
+            embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
               .setDescription('Para confirmar, por favor usar el comando .remove confirm')
             msg.channel.send(embed)
           })
