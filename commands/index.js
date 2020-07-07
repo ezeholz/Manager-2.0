@@ -46,6 +46,7 @@ class Manager {
         let module = require(__dirname + '/functions/' + mod + '/module.js');
         module.setup(this, this.database, this.googleKey)
         
+        try {
         files.forEach(file => {
           try {
             
@@ -58,7 +59,10 @@ class Manager {
             error = true
             console.error(mod + " / " + file + " Unable to load " + err)
           }
-        })
+        })} catch (err) {
+            error = true
+            console.error(mod + " Unable to load " + err)
+          }
         if (!error) {
           this.client.commands[module.trigger] = module
         }
@@ -87,6 +91,8 @@ class Manager {
       if (this.client.commands['music'].enabled && this.client.commands['play'].enabled) {
         this.client.commands['play'].start(this)
       }
+      
+      // Rooms as start
       
       if (this.client.commands['rooms'].enabled && this.client.commands['room'].enabled) {
         setInterval(() => {

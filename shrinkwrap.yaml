@@ -7,6 +7,7 @@ dependencies:
   ffmpeg-static: 4.2.5
   fs: 0.0.2
   lowdb: 1.0.0
+  node-fetch: 2.6.0
   ytdl-core: 3.1.2
 packages:
   /@discordjs/collection/0.1.5:
@@ -1174,4 +1175,5 @@ specifiers:
   ffmpeg-static: ^4.2.5
   fs: ^0.0.2
   lowdb: ^1.0.0
+  node-fetch: ^2.6.0
   ytdl-core: ^3.1.2
