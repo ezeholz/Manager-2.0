@@ -47,20 +47,23 @@ module.exports = {
     }
   },
   start(Manager) {
-    let db = Manager.database;
-    const values = db.getState()
+    const values = Manager.database.get()
+    let r = Math.floor(Math.random()*values.lofi.lenght)
     
-    if (values.lofi && values.lobby && ytdl.validateURL(values.lofi)) {
+    console.log(values.lofi.size())
+    
+    if (values.lofi.lenght && values.lobby && ytdl.validateURL(values.lofi[r])) {
       Manager.client.channels.fetch(values.lobby).then(channel => {
         channel.join().then(dispatcher => {
           dispatcher.voice.setMute(false)
-          dispatcher.play(ytdl(values.lofi, {
+          dispatcher.play(ytdl(values.lofi[r], {
             filter: 'audioonly',
             quality: 'highestaudio',
             highWaterMark: 10 << 25
           }),{volume:0.4,bitrate:'auto'})
           .on('end', () => {
-            dispatcher.play(ytdl(values.lofi, {
+            r = Math.floor(Math.random()*values.lofi.lenght)
+            dispatcher.play(ytdl(values.lofi[r], {
               filter: 'audioonly',
               quality: 'highestaudio',
               highWaterMark: 10 << 25
