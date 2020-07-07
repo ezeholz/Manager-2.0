@@ -18,7 +18,9 @@ module.exports = {
     
     if(values.createdRooms[msg.author.id]!==undefined) {
       if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
-        if(args[1]===undefined){
+        let user = msg.mentions.users.first()
+        if(user){
+          
           embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
             .setDescription('Para confirmar, por favor usar el comando .remove confirm')
           msg.channel.send(embed)
