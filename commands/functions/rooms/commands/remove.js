@@ -9,6 +9,9 @@ module.exports = {
   description: "Remove rooms",
   
   execute(Manager, msg, args) {
+    
+    const embed = new MessageEmbed().setColor('#dada3d')
+    
     let db = Manager.database;
     
     const values = db.getState()
@@ -17,8 +20,11 @@ module.exports = {
       if(+msg.channel.id === values.createdRooms[msg.author.id][1]) {
         if(args[1]===undefined){
           // Verificación de borrado
+          embed.setTitle('')
         } else {
-          
+          Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.delete()})
+          msg.channel.delete()
+          values.createdRooms[msg.author.id] = undefined
         }
       } else {
         // Está en otra sala
@@ -26,14 +32,6 @@ module.exports = {
     } else {
       // No tiene salas creadas
     }
-    
-//       const embed = new MessageEmbed().setColor('#dada3d')
-//         .setTitle('Valores actuales')
-//         .addFields(
-//           {name: 'Channel to lookout', value: values.channelLook},
-//           {name: 'Category for voice', value: values.voiceCategory},
-//           {name: 'Category for text', value: values.textCategory},
-//         )
       
     // msg.channel.send(embed)
   },
