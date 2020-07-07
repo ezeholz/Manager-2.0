@@ -51,9 +51,7 @@ module.exports = {
     const lobby = Manager.database.get('lobby').value()
     
     let r = Math.floor(Math.random()*lofi.size().value())
-    let song = lofi.get(r)
-    
-    console.olo
+    let song = lofi.get(r).value()
     
     if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
       Manager.client.channels.fetch(lobby).then(channel => {
