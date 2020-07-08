@@ -23,14 +23,7 @@ module.exports = {
       
       let db = Manager.database;
       
-      if(args[2]) { // Si tiene para cambiarlo
-        switch(args[1]){
-          case 'look': db.set('channelLook', args[2]).write(); break;
-          case 'voice': db.set('voiceCategory', args[2]).write(); break;
-          case 'text': db.set('textCategory', args[2]).write(); break;
-          default: break;
-        }
-      }
+      if(args[1]) db.get('streams', args[2]).write();
       
       const values = db.getState()
       
