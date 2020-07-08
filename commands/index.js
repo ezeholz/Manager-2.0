@@ -73,7 +73,7 @@ class Manager {
     
     //this.database.setState({"channelLook":"472293433462226965","voiceCategory":"472290330197229578","textCategory":"472294769247256577","createdRooms":{},"lobby":"472286818239250432","lofi":["https://www.youtube.com/watch?v=-FlxM_0S2lA","https://www.youtube.com/watch?v=lTRiuFIWV54","https://www.youtube.com/watch?v=wAPCSnAhhC8","https://www.youtube.com/watch?v=xjadNS2HBpM","https://www.youtube.com/watch?v=s49CT4DTAkw"],"log":"472270252168708097","streamChat":"729955905969586196","streams":{"DoTPr0":null}}).write()
     
-    //this.database.unset('streams.c0l0ra3').write()
+    //this.database.unset('streams.tonacho').write()
     
     //this.database.set('createdRooms',{}).write()
     
