@@ -81,14 +81,11 @@ module.exports = {
       }})
       json = await response.json()
       
-      
-      response = await fetch('https://api.twitch.tv/helix/users?id='+json.data.filter(e=>e.user_id).join('&id='),{headers:{
+      response = await fetch('https://api.twitch.tv/helix/users?id='+json.data.map(e=>e.user_id).join('&id='),{headers:{
         'Client-ID': Manager.twitchClient,
         'Authorization': 'Bearer '+auth,
       }})
       const imgs = await response.json()
-      
-      console.log(imgs)
       
       let offline
       
@@ -109,7 +106,7 @@ module.exports = {
       json.data.forEach(stream => {
         const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
         if(found[1]===null){
-          const img = imgs.data.find(e => +e.id === +stream.id)
+          const img = imgs.data.find(e => +e.id === +stream.user_id)
           const embed = new MessageEmbed().setColor('#dada3d')
             .setTitle(stream.title)
             .setURL('https://www.twitch.tv/'+stream.user_name)
