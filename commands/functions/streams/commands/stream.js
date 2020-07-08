@@ -9,7 +9,7 @@ module.exports = {
   category: "Streams",
   description: "Config streams",
   
-  execute(Manager, msg, args) {
+  async execute(Manager, msg, args) {
     const embed = new MessageEmbed().setColor('#dada3d')
     
     let db = Manager.database;
@@ -23,9 +23,20 @@ module.exports = {
       
       let db = Manager.database;
       
-      fetch()
+      if(args[1]) {
+        const response = await fetch('https://api.twitch.tv/helix/users?login='+args[0],{headers:{
+          'Client-ID': Manager.twitchClient,
+          'Authorization': 'Bearer '+Manager.twitchToken,
+        }})
+        const json = response.json()
+        
+        
+        
+        db.get('streams').set('',null).write()
+      }
       
-      if(args[1]) db.get('streams').set('',null).write()
+      
+      
       
       const values = db.getState()
       
