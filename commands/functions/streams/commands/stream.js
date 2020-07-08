@@ -56,6 +56,8 @@ module.exports = {
     const entries = Object.entries(db.get('streams'))
     const streamers = Object.keys(db.get('streams'))
     
+    const online = entries.filter(e=>e[0]!==null)
+    
     if(streamers.length){
       let response = await fetch('https://id.twitch.tv/oauth2/token?client_id='+Manager.twitchClient+'&client_secret='+Manager.twitchToken+'&grant_type=client_credentials',{method:'POST'})
       let json = await response.json()
