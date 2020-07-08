@@ -26,7 +26,9 @@ const musicBot = new MusicBot({
   googleKey: process.env.YOUTUBE_TOKEN,
   prefix: process.env.PREFIX,
   database: db,
-  botAuthor: process.env.AUTHOR
+  botAuthor: process.env.AUTHOR,
+  twitchClient: process.env.TWITCH_CLIENT_ID,
+  twitchToken: process.env.TWITCH_TOKEN,
 });
 
-musicBot.start();
+//musicBot.start();
