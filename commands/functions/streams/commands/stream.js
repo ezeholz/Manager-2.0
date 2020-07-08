@@ -92,7 +92,7 @@ module.exports = {
       offline.forEach(off => {
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
-            msg.edit({content:'Este directo está offline'})
+            msg.edit({'content':'Este directo está offline'})
             dbm.set(off[0],null).write()
           })
         })
@@ -107,7 +107,7 @@ module.exports = {
             .setAuthor(stream.user_name)
             .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
           Manager.client.channels.fetch(values.streamChat).then(channel => {
-            channel.send({content:'No bueno.. '+stream.user_name+' está en directo! ||@here||',embed:embed}).then(msg=>{
+            channel.send({'content':'No bueno.. '+stream.user_name+' está en directo! ||@here||','embed':{embed}}).then(msg=>{
               dbm.set(found[0],msg.id).write()
             })
           })
