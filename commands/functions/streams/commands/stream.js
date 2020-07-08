@@ -85,6 +85,12 @@ module.exports = {
       
       if(json.data===undefined){
         offline = online
+        
+        response = await fetch('https://api.twitch.tv/helix/users?login='+online.map(e=>e[0]).join('&login='),{headers:{
+          'Client-ID': Manager.twitchClient,
+          'Authorization': 'Bearer '+auth,
+        }})
+        imgs = await response.json()
       } else {
         offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
         
@@ -98,7 +104,16 @@ module.exports = {
       offline.forEach(off => {
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
-            msg.edit({'content':'Este directo está offline'})
+            msg.edit({'content':'Este directo está offline. Follow para no perderte el siguiente! ||@here||','embed':{
+              "title": "d",
+              "description": "d",
+              "url": "https://discordapp.com",
+              "color": 14342717,
+              "timestamp": "2020-07-08T21:51:03.425Z",
+              "thumbnail": {
+                "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+              }
+            }})
           })
         })
       })
