@@ -23,7 +23,13 @@ module.exports = {
       
       let db = Manager.database;
       
-      if(args[1]) db.get('streams').set(args[1],null).write()
+      if(args[2]) { // Si tiene para cambiarlo
+        switch(args[1]){
+          case 'add': db.get('streams').set(args[2],null).write(); break;
+          case 'channel': db.set('streamChat', args[2]).write(); break;
+          default: break;
+        }
+      }
       
       const values = db.getState()
       
@@ -33,10 +39,12 @@ module.exports = {
       if(Object.keys(values.streams).length){
         embed.addFields(
           {name: 'Streams', value: Object.keys(values.streams)},
+          {name: 'Stream Channel Announcer', value: values.streamChat},
         )
       } else {
         embed.addFields(
           {name: 'Streams', value: 'null'},
+          {name: 'Stream Channel Announcer', value: values.streamChat},
         )
       }
       msg.channel.send(embed)
@@ -52,6 +60,8 @@ module.exports = {
     const today = Date.now()
     
     let db = Manager.database.get('streams');
+    
+    const values = Manager.database.getState()
     
     const entries = Object.entries(db)
     const streamers = Object.keys(db)
@@ -73,12 +83,19 @@ module.exports = {
       const offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
       
       offline.forEach(off => {
-        db.set(off[0],null)
+        db.set(off[0],null).write()
       })
       
       json.data.forEach(stream => {
         const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
-        
+        found.forEach(e => {
+          if(e[1]===null){
+            const embed = new MessageEmbed().setColor('#dada3d')
+              .setTitle('No bueno.. '+stream.user_name+' está en directo!')
+              .setDescription()
+            Manager.client.channels.fetch(values.streamChat).then(channel => {channel.send(embed)})
+          }
+        })
       })
     }
   }

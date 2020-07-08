@@ -9,6 +9,7 @@ module.exports = {
   setup(Manager, db, googleKey) {
     db.defaults({
       streams: {},
+      streamChat: null,
     }).write()
     
   },
