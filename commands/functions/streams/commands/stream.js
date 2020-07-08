@@ -83,6 +83,11 @@ module.exports = {
       const offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
       
       offline.forEach(off => {
+        Manager.client.channels.fetch(values.streamChat).then(channel=>{
+          channel.messages.fetch(off[1]).then(msg=>{
+            msg.edit()
+          })
+        })
         db.set(off[0],null).write()
       })
       
@@ -97,7 +102,7 @@ module.exports = {
               .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
             Manager.client.channels.fetch(values.streamChat).then(channel => {
               channel.send('No bueno.. '+stream.user_name+' está en directo! ||@here||',embed).then(msg=>{
-                
+                db.set(e[0],msg.id).write()
               })
             })
           }
