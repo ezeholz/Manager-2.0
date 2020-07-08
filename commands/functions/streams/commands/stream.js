@@ -86,7 +86,9 @@ module.exports = {
         'Client-ID': Manager.twitchClient,
         'Authorization': 'Bearer '+auth,
       }})
-      response = response.json()
+      const imgs = await response.json()
+      
+      console.log(imgs)
       
       let offline
       
@@ -107,10 +109,11 @@ module.exports = {
       json.data.forEach(stream => {
         const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
         if(found[1]===null){
+          const img = imgs.data.find(e => +e.id === +stream.id)
           const embed = new MessageEmbed().setColor('#dada3d')
             .setTitle(stream.title)
             .setURL('https://www.twitch.tv/'+stream.user_name)
-            .setAuthor(stream.user_name)
+            .setAuthor(stream.user_name,img.profile_image_url,'https://www.twitch.tv/'+stream.user_name)
             .setTimestamp(stream.started_at)
             .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
           Manager.client.channels.fetch(values.streamChat).then(channel => {
