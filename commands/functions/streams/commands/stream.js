@@ -80,15 +80,23 @@ module.exports = {
       }})
       json = await response.json()
       
-      const offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
+      console.log(json)
+      
+      let offline
+      
+      if(json.data===undefined){
+        offline = online
+      } else {
+        offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
+      }
       
       offline.forEach(off => {
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
-            msg.edit()
+            msg.edit('Este directo está offline')
+            db.set(off[0],null).write()
           })
         })
-        db.set(off[0],null).write()
       })
       
       json.data.forEach(stream => {

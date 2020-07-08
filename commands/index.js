@@ -105,6 +105,14 @@ class Manager {
           this.client.commands['room'].remove(this)
         },60*1000)
       }
+      
+      // Streams as start
+      
+      if (this.client.commands['streams'].enabled && this.client.commands['stream'].enabled) {
+        setInterval(() => {
+          this.client.commands['stream'].check(this)
+        },60*1000)
+      }
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));
