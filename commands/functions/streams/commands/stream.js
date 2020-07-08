@@ -81,11 +81,12 @@ module.exports = {
       }})
       json = await response.json()
       
-      json.data.filter(e=>e)
-      response = await fetch('https://api.twitch.tv/helix/users?login='+streamers.join('&login='),{headers:{
+      
+      response = await fetch('https://api.twitch.tv/helix/users?id='+json.data.filter(e=>e.user_id).join('&id='),{headers:{
         'Client-ID': Manager.twitchClient,
         'Authorization': 'Bearer '+auth,
       }})
+      response = response.json()
       
       let offline
       
