@@ -81,18 +81,18 @@ module.exports = {
       }})
       json = await response.json()
       
-      response = await fetch('https://api.twitch.tv/helix/users?id='+json.data.map(e=>e.user_id).join('&id='),{headers:{
-        'Client-ID': Manager.twitchClient,
-        'Authorization': 'Bearer '+auth,
-      }})
-      const imgs = await response.json()
-      
-      let offline
+      let offline, imgs
       
       if(json.data===undefined){
         offline = online
       } else {
         offline = online.filter(e=>json.data.find(i=>i.user_name.toLowerCase()===e[0].toLowerCase())===undefined)
+        
+        response = await fetch('https://api.twitch.tv/helix/users?id='+json.data.map(e=>e.user_id).join('&id='),{headers:{
+          'Client-ID': Manager.twitchClient,
+          'Authorization': 'Bearer '+auth,
+        }})
+        imgs = await response.json()
       }
       
       offline.forEach(off => {
