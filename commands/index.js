@@ -73,7 +73,7 @@ class Manager {
     
     //this.database.setState({}).write()
     
-    this.database.unset('streams.c0l0ra3').write()
+    //this.database.unset('streams.c0l0ra3').write()
     
     //this.database.set('createdRooms',{}).write()
     

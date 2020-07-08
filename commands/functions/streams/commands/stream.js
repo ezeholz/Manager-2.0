@@ -105,9 +105,10 @@ module.exports = {
             .setTitle(stream.title)
             .setURL('https://www.twitch.tv/'+stream.user_name)
             .setAuthor(stream.user_name)
+            .setTimestamp(stream.started_at)
             .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
           Manager.client.channels.fetch(values.streamChat).then(channel => {
-            channel.send({'content':'No bueno.. '+stream.user_name+' está en directo! ||@here||','embed':{embed}}).then(msg=>{
+            channel.send({'content':'No bueno.. '+stream.user_name+' está en directo! ||@here||','embed':embed}).then(msg=>{
               dbm.set(found[0],msg.id).write()
             })
           })
