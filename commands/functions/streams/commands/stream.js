@@ -60,14 +60,12 @@ module.exports = {
     const today = Date.now()
     
     let db = Manager.database.get('streams').value();
+    let dbm = Manager.database.get('streams');
     
     const values = Manager.database.getState()
     
     const entries = Object.entries(db)
     const streamers = Object.keys(db)
-    
-    console.log(streamers)
-    console.log(streamers.join('&user_login='))
     
     const online = entries.filter(e=>e[1]!==null)
     
@@ -94,28 +92,26 @@ module.exports = {
       offline.forEach(off => {
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
-            msg.edit('Este directo está offline')
-            db.set(off[0],null).write()
+            msg.edit({content:'Este directo está offline'})
+            dbm.set(off[0],null).write()
           })
         })
       })
       
       json.data.forEach(stream => {
         const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
-        found.forEach(e => {
-          if(e!==null && e[1]===null){
-            const embed = new MessageEmbed().setColor('#dada3d')
-              .setTitle(stream.title)
-              .setURL('https://www.twitch.tv/'+stream.user_name)
-              .setAuthor(stream.user_name)
-              .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
-            Manager.client.channels.fetch(values.streamChat).then(channel => {
-              channel.send('No bueno.. '+stream.user_name+' está en directo! ||@here||',embed).then(msg=>{
-                db.set(e[0],msg.id).write()
-              })
+        if(found[1]===null){
+          const embed = new MessageEmbed().setColor('#dada3d')
+            .setTitle(stream.title)
+            .setURL('https://www.twitch.tv/'+stream.user_name)
+            .setAuthor(stream.user_name)
+            .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
+          Manager.client.channels.fetch(values.streamChat).then(channel => {
+            channel.send({content:'No bueno.. '+stream.user_name+' está en directo! ||@here||',embed:embed}).then(msg=>{
+              dbm.set(found[0],msg.id).write()
             })
-          }
-        })
+          })
+        }
       })
     }
   }

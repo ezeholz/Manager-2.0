@@ -111,7 +111,7 @@ class Manager {
       if (this.client.commands['streams'].enabled && this.client.commands['stream'].enabled) {
         setInterval(() => {
           this.client.commands['stream'].check(this)
-        },60*1000)
+        },10*1000)
       }
 		});
 
