@@ -23,6 +23,8 @@ module.exports = {
       
       let db = Manager.database;
       
+      fetch()
+      
       if(args[1]) db.get('streams').set('',null).write()
       
       const values = db.getState()

@@ -21,6 +21,8 @@ class Manager {
 		this.googleKey = options.googleKey;
 		this.prefix = options.prefix || '.'; //Prefix setup
     this.botAuthor = options.botAuthor;
+    this.twitchClient = options.twitchClient;
+    this.twitchToken = options.twitchToken;
     
     this.database = options.database;
 
