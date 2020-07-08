@@ -93,7 +93,6 @@ module.exports = {
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
             msg.edit({'content':'Este directo está offline'})
-            dbm.set(off[0],null).write()
           })
         })
       })

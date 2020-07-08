@@ -16,11 +16,22 @@ module.exports = {
       */
       
       if(args[1]){
-        args.shift()
-        console.log(args.join(' '))
-        const response = JSON.stringify(eval(args.join(' ')))
-        console.log(response)
-        msg.channel.send({'content':'```'+response+'```'})
+        if(args[1]!=='set') {
+          args.shift()
+          console.log(args.join(' '))
+          const response = JSON.stringify(eval(args.join(' ')))
+          console.log(response)
+          msg.channel.send({'content':'```'+response+'```'})
+          try{
+            msg.channel.messages.fetch(Manager.database.get('cmd')).then(msg=>{
+              msg.edit({'content':'```'+response+'```'})
+            })
+          } catch(err){
+            
+          }
+        } else {
+          
+        }
       }
       
     } else {
