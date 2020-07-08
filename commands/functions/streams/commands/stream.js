@@ -68,7 +68,10 @@ module.exports = {
       }})
       json = await response.json()
       
-      
+      json.data.forEach(stream => {
+        const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
+        
+      })
     }
   }
 }
