@@ -23,6 +23,8 @@ module.exports = {
       
       let db = Manager.database;
       
+      let head = new Headers()
+      
       if(args[1]) {
         const response = await fetch('https://api.twitch.tv/helix/users?login='+args[0],{headers:{
           'Client-ID': Manager.twitchClient,
