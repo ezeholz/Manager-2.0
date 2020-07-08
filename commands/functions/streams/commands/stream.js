@@ -108,7 +108,7 @@ module.exports = {
               "thumbnail": {
                 "url": img.profile_image_url
               }
-            }})
+            }}).then(()=>dbm.set(off[0],null).write())
           })
         })
       })
