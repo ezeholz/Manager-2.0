@@ -96,7 +96,7 @@ module.exports = {
       }
       
       offline.forEach(off => {
-        const img = imgs.data.find(e => e.login === off[0])
+        const img = imgs.data.find(e => e.login.toLowerCase() === off[0].toLowerCase())
         Manager.client.channels.fetch(values.streamChat).then(channel=>{
           channel.messages.fetch(off[1]).then(msg=>{
             msg.edit({'content':'Este directo está offline. Follow para no perderte el siguiente! ||@here||','embed':{
