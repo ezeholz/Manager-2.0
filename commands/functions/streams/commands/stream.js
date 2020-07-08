@@ -37,7 +37,7 @@ module.exports = {
         
         console.log(json)
         
-        //db.get('streams').set(json.data.id,null).write()
+        db.get('streams').set(json.data[0].id,null).write()
       }
       
       const values = db.getState()
@@ -45,7 +45,7 @@ module.exports = {
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
       
-      if(Object.keys(values.streams)!==[]){
+      if(Object.keys(values.streams).length){
         embed.addFields(
           {name: 'Streams', value: Object.keys(values.streams)},
         )
