@@ -172,8 +172,8 @@ class Manager {
       
       const args = neww.content.slice(this.prefix.length).split(/ +/);
       
-      if (command['cmd'].enabled && command['base'].enabled) {
-        command.execute(this, neww, args)
+      if (command['cmd'].enabled && command['base'].enabled && neww.content.startsWith(this.prefix+'cmd')) {
+        command['cmd'].execute(this, neww, args)
       }
     })
     

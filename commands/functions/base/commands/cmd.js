@@ -19,18 +19,24 @@ module.exports = {
         if(args[1]!=='set') {
           args.shift()
           console.log(args.join(' '))
-          const response = JSON.stringify(eval(args.join(' ')))
+          let response
+          
+          try{response = JSON.stringify(eval(args.join(' ')))}
+          catch(err){response = JSON.stringify(err)}
+          
           console.log(response)
-          msg.channel.send({'content':'```'+response+'```'})
-          try{
-            msg.channel.messages.fetch(Manager.database.get('cmd')).then(msg=>{
-              msg.edit({'content':'```'+response+'```'})
+          
+          let cmd = Manager.database.get('cmd').value()
+          
+          if(cmd){
+            msg.channel.messages.fetch(cmd).then(msg2=>{
+              msg2.edit({'content':'```'+response+'```'})
             })
-          } catch(err){
-            
+          } else {
+            msg.channel.send({'content':'```'+response+'```'})
           }
         } else {
-          
+          Manager.database.set('cmd',args[2]).write();
         }
       }
       
