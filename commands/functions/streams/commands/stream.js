@@ -24,11 +24,9 @@ module.exports = {
       let db = Manager.database;
       
       if(args[1]) {
-        const response = await fetch('https://api.twitch.tv/helix/users?login='+args[0],{headers:{
-          'Client-ID': Manager.twitchClient.toString(),
-          //'Authorization': 'Bearer '+Manager.twitchToken.toString(),
-        }})
-        const json = await response.json()
+        let response = await fetch('https://id.twitch.tv/oauth2/token?client_id='+Manager.twitchClient+'&client_secret='+Manager.twitchToken+'&grant_type=client_credentials',{method:'POST'})
+        console.log(response)
+        let json = await response.json()
         
         console.log(json)
         
