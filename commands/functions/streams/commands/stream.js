@@ -25,7 +25,7 @@ module.exports = {
       
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'add': db.get('streams').set(args[2],null).write(); break;
+          case 'add': db.get('streams').set(args[2].toLowerCase(),null).write(); break;
           case 'channel': db.set('streamChat', args[2]).write(); break;
           default: break;
         }
@@ -104,9 +104,9 @@ module.exports = {
               "description": img.description,
               "url": 'https://www.twitch.tv/'+img.login,
               "color": 14342717,
-              "timestamp": "2020-07-08T21:51:03.425Z",
+              "timestamp": new Date().toISOString(),
               "thumbnail": {
-                "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                "url": img.profile_image_url
               }
             }})
           })
