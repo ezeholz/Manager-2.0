@@ -17,7 +17,10 @@ module.exports = {
       
       if(args[1]){
         args.shift()
-        msg.channel.send({'content':eval('Manager.'+args.join(' '))})
+        console.log('Manager.'+args.join(' '))
+        const response = JSON.stringify(eval('Manager.'+args.join(' ')))
+        console.log(response)
+        msg.channel.send({'content':'```'+response+'```'})
       }
       
     } else {
