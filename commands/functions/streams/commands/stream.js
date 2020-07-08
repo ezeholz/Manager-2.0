@@ -59,12 +59,15 @@ module.exports = {
   async check(Manager){
     const today = Date.now()
     
-    let db = Manager.database.get('streams');
+    let db = Manager.database.get('streams').value();
     
     const values = Manager.database.getState()
     
     const entries = Object.entries(db)
     const streamers = Object.keys(db)
+    
+    console.log(streamers)
+    console.log(streamers.join('&user_login='))
     
     const online = entries.filter(e=>e[1]!==null)
     
@@ -79,8 +82,6 @@ module.exports = {
         'Authorization': 'Bearer '+auth,
       }})
       json = await response.json()
-      
-      console.log(json)
       
       let offline
       
@@ -102,7 +103,7 @@ module.exports = {
       json.data.forEach(stream => {
         const found = entries.find(e => e[0].toLowerCase() === stream.user_name.toLowerCase())
         found.forEach(e => {
-          if(e[1]===null){
+          if(e!==null && e[1]===null){
             const embed = new MessageEmbed().setColor('#dada3d')
               .setTitle(stream.title)
               .setURL('https://www.twitch.tv/'+stream.user_name)
