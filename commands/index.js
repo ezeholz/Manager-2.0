@@ -156,12 +156,25 @@ class Manager {
       
       const command = this.client.commands;
       
-      if (command['create'].enabled && command[command['create'].module].enabled) {
+      if (command['create'].enabled && command['rooms'].enabled) {
         if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
           command['create'].voice(this, neww, neww.guild)
         }
       }
+    })
+    
+    // ------------------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------Edit-----------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------
+    
+    this.client.on('messageUpdate', (old, neww) => {
+      const command = this.client.commands;
       
+      const args = neww.content.slice(this.prefix.length).split(/ +/);
+      
+      if (command['cmd'].enabled && command['base'].enabled) {
+        command.execute(this, neww, args)
+      }
     })
     
 	}
