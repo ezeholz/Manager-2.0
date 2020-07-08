@@ -28,11 +28,11 @@ module.exports = {
           'Client-ID': Manager.twitchClient,
           'Authorization': 'Bearer '+Manager.twitchToken,
         }})
-        const json = response.json()
+        const json = await response.json()
         
+        console.log(json)
         
-        
-        db.get('streams').set('',null).write()
+        //db.get('streams').set(json.data.id,null).write()
       }
       
       
@@ -43,9 +43,7 @@ module.exports = {
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
         .addFields(
-          {name: 'Channel to lookout', value: values.channelLook},
-          {name: 'Category for voice', value: values.voiceCategory},
-          {name: 'Category for text', value: values.textCategory},
+          {name: 'Streams', value: Object.keys(values.streams) || 'null'},
         )
       
       msg.channel.send(embed)
