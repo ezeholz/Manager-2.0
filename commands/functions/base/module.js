@@ -9,9 +9,9 @@ module.exports = {
   setup(Manager, db, googleKey) {
     db.defaults({
       log: null, // Canal donde se manda el log
-      cmd: null,
-      cmdResponse: null,
     }).write()
+    
+    db.set('cmd',null).write()
   },
   
   execute(Manager, msg, args) {

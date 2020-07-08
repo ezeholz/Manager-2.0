@@ -16,7 +16,7 @@ module.exports = {
       */
       
       if(args[1]){
-        if(args[1]!=='set') {
+        if(args[1]!=='set' && args[1]!=='unset') {
           args.shift()
           console.log(args.join(' '))
           let response
@@ -36,7 +36,11 @@ module.exports = {
             msg.channel.send({'content':'```'+response+'```'})
           }
         } else {
-          Manager.database.set('cmd',args[2]).write();
+          switch(args[1]){
+            case 'set': Manager.database.set('cmd',args[2]).write();break;
+            case 'unset': Manager.database.unset('cmd').write();break;
+          }
+          
         }
       }
       
