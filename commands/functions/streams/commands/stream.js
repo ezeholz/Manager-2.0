@@ -91,9 +91,15 @@ module.exports = {
         found.forEach(e => {
           if(e[1]===null){
             const embed = new MessageEmbed().setColor('#dada3d')
-              .setTitle('No bueno.. '+stream.user_name+' está en directo!')
-              .setDescription()
-            Manager.client.channels.fetch(values.streamChat).then(channel => {channel.send(embed)})
+              .setTitle(stream.title)
+              .setURL('https://www.twitch.tv/'+stream.user_name)
+              .setAuthor(stream.user_name)
+              .setImage(stream.thumbnail_url.replace('{width}','1920').replace('{height}','1080'))
+            Manager.client.channels.fetch(values.streamChat).then(channel => {
+              channel.send('No bueno.. '+stream.user_name+' está en directo! ||@here||',embed).then(msg=>{
+                
+              })
+            })
           }
         })
       })
