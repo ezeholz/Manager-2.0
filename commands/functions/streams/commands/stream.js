@@ -53,17 +53,22 @@ module.exports = {
     
     let db = Manager.database;
     
-    const values = Object.entries(db.get('streams'))
+    const entries = Object.entries(db.get('streams'))
+    const streamers = Object.keys(db.get('streams'))
     
-    let response = await fetch('https://id.twitch.tv/oauth2/token?client_id='+Manager.twitchClient+'&client_secret='+Manager.twitchToken+'&grant_type=client_credentials',{method:'POST'})
-    let json = await response.json()
+    if(streamers.length){
+      let response = await fetch('https://id.twitch.tv/oauth2/token?client_id='+Manager.twitchClient+'&client_secret='+Manager.twitchToken+'&grant_type=client_credentials',{method:'POST'})
+      let json = await response.json()
 
-    let auth = json.access_token
+      let auth = json.access_token
 
-    response = await fetch('https://api.twitch.tv/helix/streams?user_login=',{headers:{
-      'Client-ID': Manager.twitchClient,
-      'Authorization': 'Bearer '+auth,
-    }})
-    json = await response.json()
+      response = await fetch('https://api.twitch.tv/helix/streams?user_login='+streamers.join('&user_login='),{headers:{
+        'Client-ID': Manager.twitchClient,
+        'Authorization': 'Bearer '+auth,
+      }})
+      json = await response.json()
+      
+      
+    }
   }
 }
