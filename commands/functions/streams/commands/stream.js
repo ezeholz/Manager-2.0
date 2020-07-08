@@ -25,25 +25,35 @@ module.exports = {
       
       if(args[1]) {
         let response = await fetch('https://id.twitch.tv/oauth2/token?client_id='+Manager.twitchClient+'&client_secret='+Manager.twitchToken+'&grant_type=client_credentials',{method:'POST'})
-        console.log(response)
         let json = await response.json()
+        
+        let auth = json.access_token
+        
+        response = await fetch('https://api.twitch.tv/helix/users?login='+args[1],{headers:{
+          'Client-ID': Manager.twitchClient,
+          'Authorization': 'Bearer '+auth,
+        }})
+        json = await response.json()
         
         console.log(json)
         
         //db.get('streams').set(json.data.id,null).write()
       }
       
-      
-      
-      
       const values = db.getState()
       
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
-        .addFields(
+      
+      if(Object.keys(values.streams)!==[]){
+        embed.addFields(
           {name: 'Streams', value: Object.keys(values.streams)},
         )
-      
+      } else {
+        embed.addFields(
+          {name: 'Streams', value: 'null'},
+        )
+      }
       msg.channel.send(embed)
       
     } else {
