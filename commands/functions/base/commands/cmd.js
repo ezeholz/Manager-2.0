@@ -17,7 +17,7 @@ module.exports = {
       
       if(args[1]){
         args.shift()
-        msg.channel.send(eval('Manager.'+args.join(' ')))
+        console.log(eval('Manager.'+args.join(' ')))
       }
       
     } else {
