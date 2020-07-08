@@ -29,7 +29,13 @@ module.exports = {
         
         let auth = json.access_token
         
-        response = await fetch('https://api.twitch.tv/helix/users?login='+args[1],{headers:{
+        // response = await fetch('https://api.twitch.tv/helix/users?login='+args[1],{headers:{
+        //   'Client-ID': Manager.twitchClient,
+        //   'Authorization': 'Bearer '+auth,
+        // }})
+        // json = await response.json()
+        
+        response = await fetch('https://api.twitch.tv/helix/streams?user_login='+args[1],{headers:{
           'Client-ID': Manager.twitchClient,
           'Authorization': 'Bearer '+auth,
         }})
@@ -37,7 +43,7 @@ module.exports = {
         
         console.log(json)
         
-        db.get('streams').set(json.data[0].id,null).write()
+        //db.get('streams').set(json.data[0].id,null).write()
       }
       
       const values = db.getState()
