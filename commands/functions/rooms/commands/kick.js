@@ -23,7 +23,7 @@ module.exports = {
         if(users.array().length){
           users.forEach(function(user){
             msg.channel.permissionOverwrites.get(user.id).delete()
-            Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.permissionOverwrites.get(user.id).delete()})
+            Manager.client.channels.fetch(values.createdRooms[msg.author.id][0]).then(channel => {channel.permissionOverwrites.get(user.id).delete();user.setChannel(null)})
             embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
               .setDescription('Para confirmar, por favor usar el comando .remove confirm')
             msg.channel.send(embed)
