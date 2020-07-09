@@ -21,8 +21,8 @@ module.exports = {
       if(args[1] && module && module !== 'base'){
         let e = Manager.client.commands[module].enabled
         switch(e){
-          case true: e = false;break;
-          case false: e = true;break;
+          case true: Manager.client.commands[module].enabled = false;break;
+          case false: Manager.client.commands[module].enabled = true;break;
         }
       } else if (module === 'base') {
         const embed = new MessageEmbed().setColor('#dada3d')
@@ -41,8 +41,7 @@ module.exports = {
       
       Object.values(Manager.client.modules).forEach(a=>{
         let mod = Manager.client.commands[a]
-        console.log(mod.category)
-        embed.addField(mod.category+(mod.enabled)?':white_check_mark:':':no_entry_sign:','\u200B',true)
+        embed.addField(mod.category,(mod.enabled)?':white_check_mark:':':no_entry_sign:',true)
       })
       
       msg.channel.send(embed)
