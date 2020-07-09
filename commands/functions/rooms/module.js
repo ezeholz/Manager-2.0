@@ -24,7 +24,7 @@ module.exports = {
   start(Manager){
     if (this.enabled && Manager.client.commands['room'].enabled) {
       this.interval = setInterval(() => {
-        Manager.client.commands['room'].remove(this)
+        Manager.client.commands['room'].timer(Manager)
       },10*1000)
     } else {
       if(this.interval) clearInterval(this.interval)

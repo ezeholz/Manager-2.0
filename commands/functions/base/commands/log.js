@@ -45,6 +45,8 @@ module.exports = {
       const embed = new MessageEmbed().setColor('#dada3d')
         .setDescription(msg)
       Manager.client.channels.fetch(values.log).then(channel => {channel.send(embed)})
+    } else {
+      console.log('No hay log definido! ' + msg)
     }
   }
 }

@@ -45,7 +45,7 @@ module.exports = {
       msg.channel.send(embed)
     }
   },
-  remove(Manager){
+  timer(Manager){
     const today = Date.now()
     
     let db = Manager.database;

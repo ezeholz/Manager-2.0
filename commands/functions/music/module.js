@@ -59,7 +59,7 @@ module.exports = {
         })
       })
     } else {
-      console.log('No se pudo reproducir')
+      console.log('No se pudo reproducir' + lofi.size().value() + lobby + ytdl.validateURL(song))
     }
   }
 }

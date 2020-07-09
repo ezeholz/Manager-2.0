@@ -22,7 +22,7 @@ module.exports = {
   start(Manager){
     if (this.enabled && Manager.client.commands['stream'].enabled) {
       this.interval = setInterval(() => {
-        Manager.client.commands['stream'].check(this)
+        Manager.client.commands['stream'].check(Manager)
       },10*1000)
     } else {
       if(this.interval) clearInterval(this.interval)

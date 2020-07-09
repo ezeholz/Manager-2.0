@@ -21,8 +21,8 @@ module.exports = {
       if(args[1] && module && module !== 'base'){
         let e = Manager.client.commands[module].enabled
         switch(e){
-          case true: Manager.client.commands[module].enabled = false;break;
-          case false: Manager.client.commands[module].enabled = true;break;
+          case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;
+          case false: Manager.client.commands[module].enabled = true; Manager.client.commands[module].start(Manager); break;
         }
       } else if (module === 'base') {
         const embed = new MessageEmbed().setColor('#dada3d')

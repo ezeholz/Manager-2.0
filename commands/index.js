@@ -86,25 +86,16 @@ class Manager {
 			console.log('Bot is ready!');
 			this.client.user.setActivity('DoTPr0 ;3', { type: 'STREAMING', url: "https://www.twitch.tv/dotpr0/" });
       
-      if (this.client.commands['base'].enabled && this.client.commands['log'].enabled) {
+      if (this.client.commands['log'].enabled) {
         this.client.commands['log'].log(this,'Bot Reiniciado')
       }
       
-      // Music as start
+      Object.values(this.client.modules).forEach(a=>{
+        let mod = this.client.commands[a]
+        if(mod.onStart) mod.start(this)
+      })
       
-      if (this.client.commands['music'].enabled && this.client.commands['play'].enabled) {
-        this.client.commands['play'].start(this)
-      }
-      
-      // Rooms as start
-      
-      
-      
-      // Streams as start
-      
-      
-      
-		});
+    });
 
     this.client.on("unhandledRejection", e => console.error(e));
     
