@@ -38,6 +38,7 @@ class Manager {
   setup_() {
 		this.client = new Discord.Client();
 		this.client.commands = new Discord.Collection();  ///Command Handler
+    this.client.modules = new Discord.Collection()
 
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
@@ -67,6 +68,7 @@ class Manager {
           }
         if (!error) {
           this.client.commands[module.trigger] = module
+          this.client.modules[mod] = module.trigger
         }
       })
     })
