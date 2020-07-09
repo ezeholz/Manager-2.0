@@ -103,7 +103,7 @@ class Manager {
       if (this.client.commands['rooms'].enabled && this.client.commands['room'].enabled) {
         setInterval(() => {
           this.client.commands['room'].remove(this)
-        },60*1000)
+        },10*1000)
       }
       
       // Streams as start
