@@ -19,7 +19,6 @@ module.exports = {
     if(values.createdRooms[msg.author.id]!==undefined) {
       if(+msg.channel.id === +values.createdRooms[msg.author.id][1]) {
         let users = msg.mentions.users
-        console.log(users)
         if(users.array().length){
           users.forEach(function(user){
             msg.channel.permissionOverwrites.get(user.id).delete()
@@ -28,8 +27,8 @@ module.exports = {
               const m = channel.members.find(u=>+u.id === +user.id)
               if(m) m.edit({channel:null})
             })
-            embed.setTitle(':no_entry_sign: Seguro que quieres borrar los chats?')
-              .setDescription('Para confirmar, por favor usar el comando .remove confirm')
+            embed.setTitle(':cry: Una pena que '+user.username+' se tenga que ir')
+              .setDescription('No realmente, soy un bot, no puedo apegarme a las personas.')
             msg.channel.send(embed)
           })
         } else {
