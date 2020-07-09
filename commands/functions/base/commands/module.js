@@ -39,11 +39,11 @@ module.exports = {
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
       
-      const a = Manager.client.modules.map(e=>e)
-      
-        embed.addFields(
-          {name: 'Channel Log Selected', value: 'holi',inline: true},
-        )
+      Object.values(Manager.client.modules).forEach(a=>{
+        let mod = Manager.client.commands[a]
+        console.log(mod.category)
+        embed.addField(mod.category+(mod.enabled)?':white_check_mark:':':no_entry_sign:','\u200B',true)
+      })
       
       msg.channel.send(embed)
       
