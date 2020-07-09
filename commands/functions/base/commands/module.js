@@ -18,7 +18,7 @@ module.exports = {
       let db = Manager.database;
       let module = Manager.client.modules[args[1]]
       
-      if(args[1] && module && && module !== 'base'){
+      if(args[1] && module && module !== 'base'){
         let e = Manager.client.commands[module].enabled
         switch(e){
           case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;

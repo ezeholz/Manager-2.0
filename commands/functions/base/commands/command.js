@@ -18,12 +18,12 @@ module.exports = {
       let db = Manager.database;
       let command = Manager.client.commands[args[1]]
       
-      if(args[1] && command){
+      if(args[1] && command && command.module){
         if(command !== 'module' && command !== 'command'){
           let e = Manager.client.commands[command].enabled
           switch(e){
-            case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;
-            case false: Manager.client.commands[module].enabled = true; Manager.client.commands[module].start(Manager); break;
+            case true: Manager.client.commands[command].enabled = false; break;
+            case false: Manager.client.commands[command].enabled = true; break;
           }
         } else {
           const embed = new MessageEmbed().setColor('#dada3d')

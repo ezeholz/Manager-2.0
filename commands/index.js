@@ -48,15 +48,18 @@ class Manager {
         
         let module = require(__dirname + '/functions/' + mod + '/module.js');
         module.setup(this, this.database, this.googleKey)
+        let comArr = []
         
         try {
         files.forEach(file => {
+          
           try {
             
             let temp = require(__dirname + '/functions/' + mod + '/commands/' + file);
             
             this.client.commands[temp.trigger] = temp
             this.client.commands[temp.trigger].module = mod
+            comArr.push(temp.trigger)
             
           } catch (err) {
             error = true
@@ -68,6 +71,7 @@ class Manager {
           }
         if (!error) {
           this.client.commands[module.trigger] = module
+          this.client.commands[module.trigger].commands = comArr
           this.client.modules[mod] = module.trigger
         }
       })
