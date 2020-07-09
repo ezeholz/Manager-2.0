@@ -38,12 +38,14 @@ module.exports = {
       
       await guild.channels.create('Salón de ' + name, {'parent':values.voiceCategory,'type':'voice'})
         .then(function(channel){
+          channel.createOverwrite(author.user,{ CONNECT: true })
           created[0] = channel.id
           author.setChannel(channel)
         })
       await guild.channels.create('Notas de ' + name, {'parent':values.textCategory,'type':'text'})
         .then(function(channel){
           created[1] = channel.id
+          channel.createOverwrite(author.user,{ VIEW_CHANNEL: true })
           channel.send(embed)
         })
 
