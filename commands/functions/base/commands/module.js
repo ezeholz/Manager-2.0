@@ -18,16 +18,31 @@ module.exports = {
       let db = Manager.database;
       let module = Manager.client.modules[args[1]]
       
-      if(args[1] && module){
-        let e = Manager.client.commands[]
+      if(args[1] && module && module !== 'base'){
+        let e = Manager.client.commands[module].enabled
+        switch(e){
+          case true: e = false;break;
+          case false: e = true;break;
+        }
+      } else if (module === 'base') {
+        const embed = new MessageEmbed().setColor('#dada3d')
+          .setTitle(':no_entry_sign: Por ahí no es bro..')
+          .setDescription('Amigo, Desactivás esto y estás fucked')
+        msg.channel.send(embed)
+      } else if (args[1]){
+        const embed = new MessageEmbed().setColor('#dada3d')
+          .setTitle(':no_entry_sign: De qué.. Estás.. Hablando??')
+          .setDescription('I know, no sos Elastigirl. Porfa revisá el nombre que no lo encuentro en la base, plis')
+        msg.channel.send(embed)
       }
-      
-      const values = db.getState()
       
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')
-        .addFields(
-          {name: 'Channel Log Selected', value: values.log},
+      
+      const a = Manager.client.modules.map(e=>e)
+      
+        embed.addFields(
+          {name: 'Channel Log Selected', value: 'holi',inline: true},
         )
       
       msg.channel.send(embed)
