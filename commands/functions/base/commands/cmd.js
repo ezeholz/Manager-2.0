@@ -21,8 +21,14 @@ module.exports = {
           console.log(args.join(' '))
           let response
           
-          try{response = JSON.stringify(eval(args.join(' ')))}
-          catch(err){response = JSON.stringify(err)}
+          try{
+            let a = eval(args.join(' '))
+            if(JSON.stringify(a)==={}) response=a
+            else response = JSON.stringify(a)
+          }
+          catch(err){response = err}
+          
+          
           
           console.log(response)
           
