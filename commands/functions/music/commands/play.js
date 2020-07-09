@@ -1,4 +1,3 @@
-const ytdl = require('ytdl-core');
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
@@ -44,36 +43,6 @@ module.exports = {
         .setTitle(':no_entry_sign: Andateeeee')
         .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       msg.channel.send(embed)
-    }
-  },
-  start(Manager) {
-    const lofi = Manager.database.get('lofi')
-    const lobby = Manager.database.get('lobby').value()
-    
-    let r = Math.floor(Math.random()*lofi.size().value())
-    let song = lofi.get(r).value()
-    
-    if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
-      Manager.client.channels.fetch(lobby).then(channel => {
-        channel.join().then(dispatcher => {
-          dispatcher.voice.setMute(false)
-          dispatcher.play(ytdl(song, {
-            filter: 'audioonly',
-            quality: 'highestaudio',
-            highWaterMark: 10 << 25
-          }),{volume:0.4,bitrate:'auto'})
-          .on('end', () => {
-            r = Math.floor(Math.random()*lofi.size().value())
-            dispatcher.play(ytdl(song, {
-              filter: 'audioonly',
-              quality: 'highestaudio',
-              highWaterMark: 10 << 25
-            }),{volume:0.4,bitrate:'auto'})
-          })
-        })
-      })
-    } else {
-      console.log('No se pudo reproducir')
     }
   }
 }

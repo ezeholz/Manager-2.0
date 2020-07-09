@@ -2,7 +2,8 @@ module.exports = {
   
   trigger: "streams",
   enabled: true,
-  start: true,
+  onStart: true,
+  interval: null,
   
   category: "Streams",
   description: "Streaming on Twitch",
@@ -18,7 +19,14 @@ module.exports = {
   execute(Manager, msg, args) {
     
   },
-  start(Manager, intervals){
-    clearInterval(intervals.streams)
+  start(Manager){
+    if (this.enabled && Manager.client.commands['stream'].enabled) {
+      this.interval = setInterval(() => {
+        Manager.client.commands['stream'].check(this)
+      },10*1000)
+    } else {
+      if(this.interval) clearInterval(this.interval)
+      this.interval = null
+    }
   }
 }

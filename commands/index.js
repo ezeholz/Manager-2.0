@@ -39,7 +39,6 @@ class Manager {
 		this.client = new Discord.Client();
 		this.client.commands = new Discord.Collection();  ///Command Handler
     this.client.modules = {};
-    this.client.intervals = {};
 
 		const commandFiles = fs.readdirSync(__dirname + '/functions').filter(file => fs.statSync(path.join(__dirname + '/functions', file)).isDirectory());
 
@@ -99,21 +98,11 @@ class Manager {
       
       // Rooms as start
       
-      if (this.client.commands['rooms'].enabled && this.client.commands['room'].enabled) {
-         let id = setInterval(() => {
-          this.client.commands['room'].remove(this)
-        },10*1000)
-        this.client.intervals.rooms = id
-      }
+      
       
       // Streams as start
       
-      if (this.client.commands['streams'].enabled && this.client.commands['stream'].enabled) {
-        let id = setInterval(() => {
-          this.client.commands['stream'].check(this)
-        },10*1000)
-        this.client.intervals.streams = id
-      }
+      
       
 		});
 

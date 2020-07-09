@@ -2,6 +2,7 @@ module.exports = {
   
   trigger: "base",
   enabled: true,
+  onStart: false,
   
   category: "Base",
   description: "Comandos Básicos",
@@ -13,7 +14,6 @@ module.exports = {
     
     db.set('cmd',null).write()
   },
-  
   execute(Manager, msg, args) {
     
   },
