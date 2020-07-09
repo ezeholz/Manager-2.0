@@ -2,6 +2,7 @@ module.exports = {
   
   trigger: "streams",
   enabled: true,
+  start: true,
   
   category: "Streams",
   description: "Streaming on Twitch",
@@ -17,4 +18,7 @@ module.exports = {
   execute(Manager, msg, args) {
     
   },
+  start(Manager, intervals){
+    clearInterval(intervals.streams)
+  }
 }

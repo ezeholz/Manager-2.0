@@ -100,7 +100,7 @@ class Manager {
       // Rooms as start
       
       if (this.client.commands['rooms'].enabled && this.client.commands['room'].enabled) {
-         let id = this.setInterval(() => {
+         let id = setInterval(() => {
           this.client.commands['room'].remove(this)
         },10*1000)
         this.client.intervals.rooms = id
@@ -109,13 +109,12 @@ class Manager {
       // Streams as start
       
       if (this.client.commands['streams'].enabled && this.client.commands['stream'].enabled) {
-        let id = this.setInterval(() => {
+        let id = setInterval(() => {
           this.client.commands['stream'].check(this)
         },10*1000)
         this.client.intervals.streams = id
       }
       
-      console.log(this.client.intervals)
 		});
 
     this.client.on("unhandledRejection", e => console.error(e));

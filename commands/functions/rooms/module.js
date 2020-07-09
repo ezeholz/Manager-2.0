@@ -2,6 +2,7 @@ module.exports = {
   
   trigger: "rooms",
   enabled: true,
+  timer: true,
   
   category: "Rooms",
   description: "Private Rooms",
