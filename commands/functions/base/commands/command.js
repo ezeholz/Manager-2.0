@@ -2,11 +2,11 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
-  trigger: "module",
+  trigger: "command",
   enabled: true,
   
   category: "Base",
-  description: "Turn on and off modules",
+  description: "Turn on and off commands",
   
   execute(Manager, msg, args) {
     if (+msg.author.id === +Manager.botAuthor) {
@@ -16,19 +16,21 @@ module.exports = {
       */
       
       let db = Manager.database;
-      let module = Manager.client.modules[args[1]]
+      let command = Manager.client.commands[args[1]]
       
-      if(args[1] && module && && module !== 'base'){
-        let e = Manager.client.commands[module].enabled
-        switch(e){
-          case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;
-          case false: Manager.client.commands[module].enabled = true; Manager.client.commands[module].start(Manager); break;
+      if(args[1] && command){
+        if(command !== 'module' && command !== 'command'){
+          let e = Manager.client.commands[command].enabled
+          switch(e){
+            case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;
+            case false: Manager.client.commands[module].enabled = true; Manager.client.commands[module].start(Manager); break;
+          }
+        } else {
+          const embed = new MessageEmbed().setColor('#dada3d')
+            .setTitle(':no_entry_sign: Por ahí no es bro..')
+            .setDescription('Amigo, Desactivás esto y estás fucked')
+          msg.channel.send(embed)
         }
-      } else if (module === 'base') {
-        const embed = new MessageEmbed().setColor('#dada3d')
-          .setTitle(':no_entry_sign: Por ahí no es bro..')
-          .setDescription('Amigo, Desactivás esto y estás fucked')
-        msg.channel.send(embed)
       } else if (args[1]){
         const embed = new MessageEmbed().setColor('#dada3d')
           .setTitle(':no_entry_sign: De qué.. Estás.. Hablando??')
