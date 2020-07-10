@@ -168,7 +168,7 @@ class Manager {
     // ------------------------------------------------------------------------------------------------------------------------
     
     this.client.on('messageReactionAdd', (msg, user) => {
-//       if(+msg.message.id===){
+//       if(this.+msg.message.id){
         
 //       }
     })
