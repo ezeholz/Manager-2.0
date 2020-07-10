@@ -171,7 +171,7 @@ class Manager {
       const command = this.client.commands;
       
       if (command['lets'].enabled && command['streams'].enabled && Object.values(this.database.get('streams').value()).includes(msg.message.id)){
-        
+        console.log('vale')
       }
     })
     
