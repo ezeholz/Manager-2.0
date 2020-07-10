@@ -10,28 +10,25 @@ module.exports = {
   description: "Config streams",
   
   execute(Manager, msg, args) {
-    const embed = new MessageEmbed().setColor('#dada3d')
-    
-    let db = Manager.database;
-    
-    const values = db.getState()
     if (+msg.author.id === +Manager.botAuthor) {
       /* 
       Este es un comando admin, por ende voy a detectar cuando soy yo el que lo usa, para que nadie más pueda cambiar eso
       Podría ponerle un generador de códigos, y que imprima el código por acá, tengo que ver todavía.
       */
+      const values = db.getState()
       
       let db = Manager.database;
       
-      if(args[2]) { // Si tiene para cambiarlo
+      if(args[1]==='play'){
+        const text = values.streams[args[2]]
+      } else if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
-          case 'add': db.get('streams').set(args[2].toLowerCase(),null).write(); break;
-          case 'channel': db.set('streamChat', args[2]).write(); break;
+          case 'role': db.set('allowRole', msg.mentions.roles.first().id).write(); break;
+          case 'channel': db.set('streamChannel', args[2]).write(); break;
           default: break;
         }
       }
       
-      const values = db.getState()
       
       const embed = new MessageEmbed().setColor('#dada3d')
         .setTitle('Valores actuales')

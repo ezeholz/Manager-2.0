@@ -10,11 +10,6 @@ module.exports = {
   description: "Config streams",
   
   execute(Manager, msg, args) {
-    const embed = new MessageEmbed().setColor('#dada3d')
-    
-    let db = Manager.database;
-    
-    const values = db.getState()
     if (+msg.author.id === +Manager.botAuthor) {
       /* 
       Este es un comando admin, por ende voy a detectar cuando soy yo el que lo usa, para que nadie más pueda cambiar eso

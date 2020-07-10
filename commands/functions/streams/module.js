@@ -14,6 +14,8 @@ module.exports = {
     db.defaults({
       streams: {},
       streamChat: null,
+      streamChannel: null,
+      allowRole: null,
     }).write()
     
   },
