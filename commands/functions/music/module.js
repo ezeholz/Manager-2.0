@@ -63,7 +63,8 @@ module.exports = {
         console.log('No se pudo reproducir' + lofi.size().value() + lobby + ytdl.validateURL(song))
       }
     } else {
-      
+      const lobby = Manager.database.get('lobby').value()
+      Manager.client.channels.fetch(lobby).then(channel => {channel.leave()})
     }
   }
 }
