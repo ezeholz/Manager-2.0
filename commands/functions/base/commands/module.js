@@ -19,10 +19,10 @@ module.exports = {
       let module = Manager.client.modules[args[1]]
       
       if(args[1] && module && module !== 'base'){
-        let e = Manager.client.commands[module].enabled
-        switch(e){
-          case true: Manager.client.commands[module].enabled = false; Manager.client.commands[module].start(Manager); break;
-          case false: Manager.client.commands[module].enabled = true; Manager.client.commands[module].start(Manager); break;
+        let e = Manager.client.commands[module]
+        switch(e.enabled){
+          case true: Manager.client.commands[module].enabled = false; (e.onStart)?Manager.client.commands[module].start(Manager):console.log(); break;
+          case false: Manager.client.commands[module].enabled = true; (e.onStart)?Manager.client.commands[module].start(Manager):console.log(); break;
         }
       } else if (module === 'base') {
         const embed = new MessageEmbed().setColor('#dada3d')

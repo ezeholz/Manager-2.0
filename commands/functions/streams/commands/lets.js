@@ -26,7 +26,6 @@ module.exports = {
       if(args[2]) { // Si tiene para cambiarlo
         switch(args[1]){
           case 'add': db.get('streams').set(args[2].toLowerCase(),null).write(); break;
-          case 'remove': db.get('streams').unset(args[2].toLowerCase()).write(); break;
           case 'channel': db.set('streamChat', args[2]).write(); break;
           default: break;
         }
