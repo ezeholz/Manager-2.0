@@ -129,7 +129,9 @@ class Manager {
 
           msg.channel.send(embed)
         }
-      } else if(msg.content)
+      } else if((msg.content === 'f' || msg.content === 'F') && this.client.commands['f'].enabled && this.client.commands['fun'].enabled) {
+        this.client.commands['f'].execute(this, msg, ['f',undefined])
+      }
 		});
     
     // ------------------------------------------------------------------------------------------------------------------------
