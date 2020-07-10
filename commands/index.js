@@ -168,9 +168,13 @@ class Manager {
     // ------------------------------------------------------------------------------------------------------------------------
     
     this.client.on('messageReactionAdd', (msg, user) => {
-//       if(this.+msg.message.id){
+      const command = this.client.commands;
+      
+      if (command['lets'].enabled && command['streams'].enabled && neww.content.startsWith(this.prefix+'cmd')) {
+        if(Object.values(this.database.get('streams').value()).includes(msg.message.id)){
         
-//       }
+        }
+      }
     })
     
 	}
