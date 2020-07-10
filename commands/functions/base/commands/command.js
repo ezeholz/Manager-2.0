@@ -20,10 +20,10 @@ module.exports = {
       
       if(args[1] && command && command.module){
         if(command !== 'module' && command !== 'command'){
-          let e = Manager.client.commands[command].enabled
+          let e = command.enabled
           switch(e){
-            case true: Manager.client.commands[command].enabled = false; break;
-            case false: Manager.client.commands[command].enabled = true; break;
+            case true: Manager.client.commands[args[1]].enabled = false; break;
+            case false: Manager.client.commands[args[1]].enabled = true; break;
           }
         } else {
           const embed = new MessageEmbed().setColor('#dada3d')
@@ -44,9 +44,9 @@ module.exports = {
       Object.values(Manager.client.modules).forEach(a=>{
         let mod = Manager.client.commands[a], body = ''
         mod.commands.forEach(e=>{
-          body = body.concat(e,' \u200B'.repeat(10-e.length), (Manager.client.commands[e].enabled)?':ballot_box_with_check:\n ':':x:\n')
+          body = body.concat((Manager.client.commands[e].enabled)?':ballot_box_with_check:':':x:',' \u200B'.repeat(20-e.length),e,'\n')
         })
-        embed.addField(mod.category.concat(' '.repeat(25-mod.category.length),(mod.enabled)?' :white_check_mark:':' :no_entry_sign:'),body,true)
+        embed.addField(mod.category.concat(' '.repeat(35-mod.category.length),(mod.enabled)?' :white_check_mark:':' :no_entry_sign:'),body,true)
       })
       
       msg.channel.send(embed)
