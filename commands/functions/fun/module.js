@@ -11,6 +11,7 @@ module.exports = {
     db.defaults({
       general: null, // Canal general
       fCount: null,
+      fCooldown: null,
     }).write()
   },
   execute(Manager, msg, args) {
