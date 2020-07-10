@@ -12,6 +12,10 @@ app.get("/", (request, response) => {
   response.sendStatus(200)
 });
 
+app.get("/active", (request, response) => {
+  response.sendStatus(200)
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
@@ -31,4 +35,4 @@ const musicBot = new MusicBot({
   twitchToken: process.env.TWITCH_TOKEN,
 });
 
-//musicBot.start()
+musicBot.start()

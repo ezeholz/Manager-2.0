@@ -2,7 +2,7 @@ module.exports = {
   
   trigger: "fun",
   enabled: false,
-  onStart: true,
+  onStart: false,
   
   category: "Fun",
   description: "Diversion para el chat",

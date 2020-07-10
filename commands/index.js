@@ -129,9 +129,9 @@ class Manager {
 
           msg.channel.send(embed)
         }
-      } else if(msg.content.includes(/\bf\b/gi) && this.client.commands['f'].enabled && this.client.commands['fun'].enabled) {
-        this.client.commands['f'].execute(this, msg, ['f',undefined])
-      }
+      } //else if(msg.content.includes(/\bf\b/gi) && this.client.commands['f'].enabled && this.client.commands['fun'].enabled) {
+        //this.client.commands['f'].execute(this, msg, ['f',undefined])
+      //}
 		});
     
     // ------------------------------------------------------------------------------------------------------------------------
