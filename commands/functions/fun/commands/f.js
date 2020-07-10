@@ -4,9 +4,10 @@ module.exports = {
   
   trigger: "f",
   enabled: true,
+  inProgress: false,
   
   category: "Fun",
-  description: "Make a command into the code",
+  description: "F train!",
   
   execute(Manager, msg, args) {
     if (args[1] && +msg.author.id === +Manager.botAuthor) {

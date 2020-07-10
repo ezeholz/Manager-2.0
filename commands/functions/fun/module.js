@@ -10,6 +10,7 @@ module.exports = {
   setup(Manager, db, googleKey) {
     db.defaults({
       general: null, // Canal general
+      fCount: null,
     }).write()
   },
   execute(Manager, msg, args) {
