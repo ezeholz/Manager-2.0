@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
   
   trigger: "lets",
-  enabled: true,
+  enabled: false,
   
   category: "Streams",
   description: "Config lets play",
@@ -52,5 +52,11 @@ module.exports = {
         .setDescription('Papaaaaaaa, no ves que este comando no podés usarlo?')
       msg.channel.send(embed)
     }
+  },
+  give(Manager) {
+    
+  },
+  timer(Manager) {
+    
   }
 }
