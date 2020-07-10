@@ -42,8 +42,14 @@ module.exports = {
         .setTitle('Valores actuales')
       
       Object.values(Manager.client.modules).forEach(a=>{
-        let mod = Manager.client.commands[a]
-        embed.addField(mod.category,(mod.enabled)?':white_check_mark:':':no_entry_sign:',true)
+        let mod = Manager.client.commands[a], body = ''
+        mod.commands.forEach(e=>{
+          console.log(e)
+          console.log()
+          body = body + Manager.client.commands[e].trigger + (Manager.client.commands[e].enabled)?':white_check_mark: \n ':':no_entry_sign: \n '
+        })
+        console.log(body)
+        embed.addField(mod.category+(mod.enabled)?':white_check_mark:':':no_entry_sign:',body,true)
       })
       
       msg.channel.send(embed)
