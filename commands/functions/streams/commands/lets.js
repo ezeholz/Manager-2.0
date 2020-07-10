@@ -3,11 +3,11 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   
-  trigger: "stream",
+  trigger: "lets",
   enabled: true,
   
   category: "Streams",
-  description: "Config streams",
+  description: "Config lets play",
   
   execute(Manager, msg, args) {
     if (+msg.author.id === +Manager.botAuthor) {

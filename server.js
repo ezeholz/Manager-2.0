@@ -19,16 +19,16 @@ const listener = app.listen(process.env.PORT, () => {
 
 // --------------------------------------------------------------------------------------------
 
-// const MusicBot = require('./commands/index');
+const MusicBot = require('./commands/index');
 
-// const musicBot = new MusicBot({
-//   discordToken: process.env.TOKEN,
-//   googleKey: process.env.YOUTUBE_TOKEN,
-//   prefix: process.env.PREFIX,
-//   database: db,
-//   botAuthor: process.env.AUTHOR,
-//   twitchClient: process.env.TWITCH_CLIENT_ID,
-//   twitchToken: process.env.TWITCH_TOKEN,
-// });
+const musicBot = new MusicBot({
+  discordToken: process.env.TOKEN,
+  googleKey: process.env.YOUTUBE_TOKEN,
+  prefix: process.env.PREFIX,
+  database: db,
+  botAuthor: process.env.AUTHOR,
+  twitchClient: process.env.TWITCH_CLIENT_ID,
+  twitchToken: process.env.TWITCH_TOKEN,
+});
 
 //musicBot.start()
