@@ -35,4 +35,4 @@ const musicBot = new MusicBot({
   twitchToken: process.env.TWITCH_TOKEN,
 });
 
-musicBot.start()
+//musicBot.start()

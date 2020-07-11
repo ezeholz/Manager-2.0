@@ -34,7 +34,7 @@ module.exports = {
           {name: 'Lobby voice channel', value: values.lobby},
         )
       
-      this.start(Manager)
+      //this.start(Manager)
       
       msg.channel.send(embed)
       
