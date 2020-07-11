@@ -12,9 +12,7 @@ app.get("/", (request, response) => {
   response.sendStatus(200)
 });
 
-app.get("/active", (request, response) => {
-  response.sendStatus(204)
-});
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
@@ -36,5 +34,7 @@ const musicBot = new MusicBot({
 });
 
 musicBot.start().then(()=>{
- console.log('yoli')
+  app.get("/active", (request, response) => {
+    response.sendStatus(204)
+  });
 })
