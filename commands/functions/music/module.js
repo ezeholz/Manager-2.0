@@ -37,6 +37,8 @@ module.exports = {
       const lofi = Manager.database.get('lofi')
       const lobby = Manager.database.get('lobby').value()
 
+      
+      
       let r = Math.floor(Math.random()*lofi.size().value())
       let song = lofi.get(r).value()
 
