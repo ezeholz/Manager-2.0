@@ -31,8 +31,8 @@ class Manager {
 		this.setup_();
 	}
   
-  start() {
-		this.client.login(this.discordToken);
+  async start() {
+		await this.client.login(this.discordToken);
 	}
   
   setup_() {

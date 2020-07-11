@@ -50,8 +50,7 @@ module.exports = {
               highWaterMark: 10 << 25
             }),{volume:0.4,bitrate:'auto'})
             .on('end', () => {
-              r = Math.floor(Math.random()*lofi.size().value())
-              song = lofi.get(r).value()
+              this.start(Manager)
             })
           })
         })
