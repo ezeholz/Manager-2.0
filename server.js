@@ -13,7 +13,7 @@ app.get("/", (request, response) => {
 });
 
 app.get("/active", (request, response) => {
-  response.sendStatus(200)
+  response.sendStatus(204)
 });
 
 // listen for requests :)
