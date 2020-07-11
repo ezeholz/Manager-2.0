@@ -44,7 +44,6 @@ module.exports = {
         Manager.client.channels.fetch(lobby).then(channel => {
           channel.join().then(dispatcher => {
             dispatcher.voice.setMute(false)
-            function callback(){
             dispatcher.play(ytdl(song, {
               filter: 'audioonly',
               quality: 'highestaudio',
@@ -53,8 +52,7 @@ module.exports = {
             .on('end', () => {
               r = Math.floor(Math.random()*lofi.size().value())
               song = lofi.get(r).value()
-              
-            })}
+            })
           })
         })
       } else {
