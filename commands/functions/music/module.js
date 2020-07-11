@@ -39,26 +39,30 @@ module.exports = {
 
       let r = Math.floor(Math.random()*lofi.size().value())
       let song = lofi.get(r).value()
-
+      
       if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
+        console.log('OK')
         Manager.client.channels.fetch(lobby).then(channel => {
+          console.log('OK2')
           channel.join().then(function repr(dispatcher) {
+            console.log('OK3')
             dispatcher.voice.setMute(false)
             dispatcher.play(ytdl(song, {
               filter: 'audioonly',
               quality: 'highestaudio',
               highWaterMark: 10 << 25
-            }),{volume:0.4,bitrate:'auto'})
-            .on('start', () => {
-              console.log('Music started!');
-              dispatcher.resume();
-            })
-            .on('end', () => {
-              console.log('Music ended!');
-              repr(dispatcher)
-            })
+            }),{volume:0.4})
+            // .on('start', () => {
+            //   console.log('Music started!');
+            //   dispatcher.resume();
+            // })
+            // .on('end', () => {
+            //   console.log('Music ended!');
+            //   //repr(dispatcher)
+            // })
           })
         })
+        console.log('No se pudo reproducir' + lofi.size().value() + lobby + ytdl.validateURL(song))
       } else {
         console.log('No se pudo reproducir' + lofi.size().value() + lobby + ytdl.validateURL(song))
       }
