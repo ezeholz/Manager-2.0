@@ -41,13 +41,13 @@ module.exports = {
       let song = lofi.get(r).value()
       
       if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
-        Manager.client.channels.fetch(lobby).then(channel => {
-          channel.join().then(function repr(dispatcher) {
+        Manager.client.channels.fetch(lobby).then(function repr(channel) {
+          channel.join().then(dispatcher => {
             dispatcher.voice.setMute(false)
             dispatcher.play(ytdl(song, {
               filter: 'audioonly',
               quality: 'highestaudio',
-              highWaterMark: 31 << 28
+              highWaterMark: 31 << 26
             }),{volume:0.4,bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
@@ -55,7 +55,7 @@ module.exports = {
             })
             .on('end', () => {
               console.log('Music ended!');
-              repr(dispatcher)
+              repr(channel)
             })
           })
         })
