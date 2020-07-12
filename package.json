@@ -12,12 +12,12 @@
     "express": "^4.17.1",
     "ffmpeg-static": "^4.2.5",
     "ffmpeg": "^0.0.4",
-    "@discordjs/opus": "^0.3.2",
     "lowdb": "^1.0.0",
     "fs": "^0.0.2",
     "ytdl-core": "^3.1.2",
     "node-fetch": "^2.6.0",
-    "ffmpeg-binaries": "^4.0.0"
+    "ffmpeg-binaries": "^4.0.0",
+    "@suldashi/node-opus": "^0.3.5"
   },
   "engines": {
     "node": "12.x"
