@@ -9,7 +9,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (request, response) => {
-  response.status(200).send('<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSOQTtcKl47U0rGKeZCSRCMH8ET4jJo6ORQkBvu4LUvkmSx8XYfBeUYxyHJM9um5CcJorl7naf4pXoJ/pubchart?oid=1191872193&amp;format=image#'+Math.floor(Math.random() * 100)+'"></iframe>')
+  response.status(200).send('<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSOQTtcKl47U0rGKeZCSRCMH8ET4jJo6ORQkBvu4LUvkmSx8XYfBeUYxyHJM9um5CcJorl7naf4pXoJ/pubchart?oid=1191872193#'+Math.floor(Math.random() * 100)+'"></iframe>')
 });
 
 
@@ -33,4 +33,4 @@ const musicBot = new MusicBot({
   twitchToken: process.env.TWITCH_TOKEN,
 });
 
-//musicBot.start().then(()=>{app.get("/active", (request, response) => {response.sendStatus(204)})})
+musicBot.start().then(()=>{app.get("/active", (request, response) => {response.sendStatus(204)})})
