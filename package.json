@@ -18,7 +18,8 @@
     "ytdl-core": "^3.1.2",
     "node-fetch": "^2.6.0",
     "ffmpeg-binaries": "^4.0.0",
-    "node-opus": "^0.3.3"
+    "node-opus": "^0.3.3",
+    "opusscript": "^0.0.7"
   },
   "engines": {
     "node": "12.x"
