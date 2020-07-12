@@ -48,7 +48,7 @@ module.exports = {
               filter: 'audioonly',
               quality: 'highestaudio',
               highWaterMark: 31 << 26
-            }),{volume:0.4,bitrate:'auto'})
+            }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
               //dispatcher.resume();
