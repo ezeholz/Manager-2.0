@@ -41,7 +41,7 @@ module.exports = {
       let song = lofi.get(r).value()
       
       if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
-        Manager.client.channels.fetch(lobby).then(function repr(channel) {
+        Manager.client.channels.fetch(lobby).then(channel => {
           channel.join().then(dispatcher => {
             dispatcher.voice.setMute(false)
             dispatcher.play(ytdl(song, {
@@ -51,11 +51,12 @@ module.exports = {
             }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
+              
               //dispatcher.resume();
             })
             .on('end', () => {
               console.log('Music ended!');
-              repr(channel)
+              this.start(Manager)
             })
           })
         })
