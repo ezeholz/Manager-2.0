@@ -43,6 +43,7 @@ module.exports = {
       if (lofi.size().value() && lobby && ytdl.validateURL(song)) {
         Manager.client.channels.fetch(lobby).then(channel => {
           channel.join().then(dispatcher => {
+            Manager.client.dispatcher = dispatcher
             dispatcher.voice.setMute(false)
             dispatcher.play(ytdl(song, {
               filter: 'audioonly',
@@ -51,7 +52,7 @@ module.exports = {
             }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
-              
+              setTimeout()
               //dispatcher.resume();
             })
             .on('end', () => {
