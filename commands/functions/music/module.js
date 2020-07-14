@@ -48,7 +48,7 @@ module.exports = {
             dispatcher.play(ytdl(song, {
               filter: 'audioonly',
               quality: 'highestaudio',
-              highWaterMark: 31 << 26
+              highWaterMark: 10 << 25
             }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
