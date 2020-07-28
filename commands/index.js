@@ -146,6 +146,10 @@ class Manager {
         if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
           command['create'].voice(this, neww, neww.guild)
         }
+      } else if(command['music'].enabled) {
+        if(newUserChannel !== null && newUserChannel === this.database.get('lobby').value()) {
+          command['music'].start(this)
+        }
       }
     })
     

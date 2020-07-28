@@ -52,9 +52,9 @@ module.exports = {
             }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
-              setTimeout(()=>{
-                this.start(Manager)
-              },60*60*1000)
+              // setTimeout(()=>{
+              //   this.start(Manager)
+              // },60*60*1000)
               //dispatcher.resume();
             })
             .on('end', () => {
