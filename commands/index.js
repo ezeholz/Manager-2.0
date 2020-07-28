@@ -147,7 +147,7 @@ class Manager {
           command['create'].voice(this, neww, neww.guild)
         }
       } else if(command['music'].enabled) {
-        if(newUserChannel !== null && newUserChannel === this.database.get('lobby').value()) {
+        if(newUserChannel !== null && +newUserChannel === +this.database.get('lobby').value()) {
           if(!this.client.dispatcher.speaking) command['music'].start(this)
         }
       }
