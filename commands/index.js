@@ -148,7 +148,7 @@ class Manager {
         }
       } else if(command['music'].enabled) {
         if(newUserChannel !== null && newUserChannel === this.database.get('lobby').value()) {
-          command['music'].start(this)
+          if(!this.client.dispatcher.speaking) command['music'].start(this)
         }
       }
     })
