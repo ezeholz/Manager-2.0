@@ -48,6 +48,8 @@ module.exports = {
           channel.createOverwrite(author.id,{ VIEW_CHANNEL: true })
           channel.send(embed)
         })
+      
+      if(Manager.client.commands['log'].enabled) Manager.client.commands['log'].log(Manager,'Room created '+name)
 
       db.get('createdRooms')
         .set(author.id,created)
