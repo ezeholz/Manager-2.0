@@ -35,4 +35,4 @@ const musicBot = new MusicBot({
   twitchToken: process.env.TWITCH_TOKEN,
 });
 
-musicBot.start().then(()=>{app.get("/active", (request, response) => {response.sendStatus(204)})})
+//musicBot.start().then(()=>{app.get("/active", (request, response) => {response.sendStatus(204)})})

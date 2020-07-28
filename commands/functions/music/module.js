@@ -52,6 +52,7 @@ module.exports = {
             }),{bitrate:'auto'})
             .on('start', () => {
               console.log('Music started!');
+              if(Manager.client.commands['log'].enabled) Manager.client.commands['log'].log(Manager,'Music started')
               // setTimeout(()=>{
               //   this.start(Manager)
               // },60*60*1000)

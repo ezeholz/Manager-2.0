@@ -146,9 +146,11 @@ class Manager {
         if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
           command['create'].voice(this, neww, neww.guild)
         }
-      } else if(command['music'].enabled) {
+      } 
+      
+      if(command['music'].enabled) {
         if(newUserChannel !== null && +newUserChannel === +this.database.get('lobby').value()) {
-          if(!this.client.dispatcher.speaking) command['music'].start(this)
+          if (this.client.dispatcher!==undefined && !this.client.dispatcher.speaking) command['music'].start(this)
         }
       }
     })
