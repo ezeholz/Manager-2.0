@@ -143,13 +143,13 @@ class Manager {
       const command = this.client.commands;
       
       if (command['create'].enabled && command['rooms'].enabled) {
-        if(newUserChannel !== null && newUserChannel === this.database.get('channelLook').value()) {
+        if(newUserChannel !== null && newUserChannel.toString() === this.database.get('channelLook').value()) {
           command['create'].voice(this, neww, neww.guild)
         }
       } 
       
       if(command['music'].enabled) {
-        if(newUserChannel !== null && +newUserChannel === +this.database.get('lobby').value()) {
+        if(newUserChannel !== null && newUserChannel.toString() === this.database.get('lobby').value()) {
           if (this.client.dispatcher!==undefined && !this.client.dispatcher.speaking) command['music'].start(this)
         }
       }
